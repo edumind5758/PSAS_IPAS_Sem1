@@ -48,6 +48,52 @@
         .topic-item:hover {
             transform: scale(1.02);
         }
+        
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 250px;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: 100;
+        }
+        
+        .sidebar.open {
+            transform: translateX(0);
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+            display: none;
+        }
+        
+        .overlay.show {
+            display: block;
+        }
+        
+        @media (min-width: 768px) {
+            .sidebar {
+                position: relative;
+                transform: translateX(0);
+                width: 250px;
+            }
+            
+            .toggle-sidebar {
+                display: none;
+            }
+            
+            .overlay {
+                display: none !important;
+            }
+        }
     </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
@@ -56,8 +102,8 @@
   <div id="app" class="w-full h-full"></div>
   <script>
         const defaultConfig = {
-            app_title: "RANGKUMAN KISI SOAL PSAS 6 SDIT SALSABILA",
-            welcome_text: "@midarno2025",
+            app_title: "Materi Pembelajaran Kelas 6 SD",
+            welcome_text: "Pelajari semua materi dengan lengkap dan detail!",
             primary_color: "#2563EB",
             background_color: "#F9FAFB",
             surface_color: "#FFFFFF",
@@ -778,18 +824,25 @@ Dampak Positif:
             return `
                 <div class="w-full h-full" style="background-color: ${config.background_color || defaultConfig.background_color}; display: flex; flex-direction: column;">
                     <!-- Header -->
-                    <div class="w-full" style="background: linear-gradient(135deg, ${config.primary_color || defaultConfig.primary_color}, ${config.accent_color || defaultConfig.accent_color}); padding: ${fontSize * 1.5}px; flex-shrink: 0;">
-                        <div style="max-width: 1200px; margin: 0 auto;">
-                            <button id="back-home" style="background: rgba(255,255,255,0.2); color: white; border: none; padding: ${fontSize * 0.7}px ${fontSize * 1.3}px; border-radius: 8px; cursor: pointer; font-size: ${fontSize * 1}px; font-weight: 600; margin-bottom: ${fontSize * 0.8}px;">← Kembali ke Beranda</button>
-                            <h2 style="font-size: ${fontSize * 1.8}px; font-weight: bold; color: white; text-align: center;">${subject.icon} ${subject.title}</h2>
+                    <div class="w-full" style="background: linear-gradient(135deg, ${config.primary_color || defaultConfig.primary_color}, ${config.accent_color || defaultConfig.accent_color}); padding: ${fontSize * 1.2}px ${fontSize * 1}px; flex-shrink: 0;">
+                        <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: ${fontSize * 1}px;">
+                            <button id="toggle-sidebar" class="toggle-sidebar" style="background: rgba(255,255,255,0.2); color: white; border: none; padding: ${fontSize * 0.7}px ${fontSize * 0.9}px; border-radius: 8px; cursor: pointer; font-size: ${fontSize * 1.3}px; font-weight: bold; flex-shrink: 0;">☰</button>
+                            <h2 style="font-size: ${fontSize * 1.4}px; font-weight: bold; color: white; flex: 1; text-align: center;">${subject.icon} ${subject.title}</h2>
+                            <button id="back-home" style="background: rgba(255,255,255,0.2); color: white; border: none; padding: ${fontSize * 0.7}px ${fontSize * 1}px; border-radius: 8px; cursor: pointer; font-size: ${fontSize * 0.85}px; font-weight: 600; flex-shrink: 0;">🏠 Home</button>
                         </div>
                     </div>
 
+                    <!-- Overlay -->
+                    <div id="overlay" class="overlay"></div>
+
                     <!-- Main Content Area -->
-                    <div class="w-full" style="flex: 1; overflow: hidden; display: flex;">
+                    <div class="w-full" style="flex: 1; overflow: hidden; display: flex; position: relative;">
                         <!-- Sidebar Navigation -->
-                        <div style="width: 280px; background: ${config.surface_color || defaultConfig.surface_color}; border-right: 2px solid ${config.primary_color || defaultConfig.primary_color}; padding: ${fontSize * 1.5}px; overflow-y: auto; flex-shrink: 0;">
-                            <h3 style="font-size: ${fontSize * 1.2}px; font-weight: bold; color: ${config.text_color || defaultConfig.text_color}; margin-bottom: ${fontSize * 1}px;">📖 Daftar Bab</h3>
+                        <div id="sidebar" class="sidebar" style="background: ${config.surface_color || defaultConfig.surface_color}; border-right: 2px solid ${config.primary_color || defaultConfig.primary_color}; padding: ${fontSize * 1}px; overflow-y: auto; box-shadow: 2px 0 10px rgba(0,0,0,0.1);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: ${fontSize * 0.8}px;">
+                                <h3 style="font-size: ${fontSize * 1}px; font-weight: bold; color: ${config.text_color || defaultConfig.text_color};">📖 Daftar Bab</h3>
+                                <button id="close-sidebar" class="toggle-sidebar" style="background: transparent; color: ${config.text_color || defaultConfig.text_color}; border: none; cursor: pointer; font-size: ${fontSize * 1.5}px; padding: 0;">✕</button>
+                            </div>
                             ${renderChapterList(subject, config, fontSize)}
                         </div>
 
@@ -826,7 +879,7 @@ Dampak Positif:
 
         function renderChapterList(subject, config, fontSize) {
             return subject.chapters.map((chapter, index) => `
-                <button class="chapter-button" data-chapter="${index}" style="width: 100%; text-align: left; background: ${index === currentChapterIndex ? config.primary_color || defaultConfig.primary_color : 'transparent'}; color: ${index === currentChapterIndex ? 'white' : config.text_color || defaultConfig.text_color}; border: none; padding: ${fontSize * 0.8}px ${fontSize * 1}px; border-radius: 8px; cursor: pointer; font-size: ${fontSize * 0.95}px; margin-bottom: ${fontSize * 0.5}px; border-left: 3px solid ${index === currentChapterIndex ? subject.color : 'transparent'};">
+                <button class="chapter-button" data-chapter="${index}" style="width: 100%; text-align: left; background: ${index === currentChapterIndex ? config.primary_color || defaultConfig.primary_color : 'transparent'}; color: ${index === currentChapterIndex ? 'white' : config.text_color || defaultConfig.text_color}; border: none; padding: ${fontSize * 0.6}px ${fontSize * 0.8}px; border-radius: 6px; cursor: pointer; font-size: ${fontSize * 0.75}px; margin-bottom: ${fontSize * 0.4}px; border-left: 3px solid ${index === currentChapterIndex ? subject.color : 'transparent'}; line-height: 1.3;">
                     ${chapter.title}
                 </button>
             `).join('');
@@ -852,6 +905,33 @@ Dampak Positif:
                 });
             }
 
+            const toggleBtn = document.getElementById('toggle-sidebar');
+            const closeBtn = document.getElementById('close-sidebar');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+
+            function openSidebar() {
+                sidebar.classList.add('open');
+                overlay.classList.add('show');
+            }
+
+            function closeSidebar() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('show');
+            }
+
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', openSidebar);
+            }
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeSidebar);
+            }
+
+            if (overlay) {
+                overlay.addEventListener('click', closeSidebar);
+            }
+
             const prevBtn = document.getElementById('prev-chapter');
             if (prevBtn) {
                 prevBtn.addEventListener('click', () => {
@@ -871,6 +951,7 @@ Dampak Positif:
             document.querySelectorAll('.chapter-button').forEach(button => {
                 button.addEventListener('click', function() {
                     currentChapterIndex = parseInt(this.getAttribute('data-chapter'));
+                    closeSidebar();
                     renderApp();
                 });
             });
@@ -929,5 +1010,5 @@ Dampak Positif:
 
         renderApp();
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a773d54503afdf8',t:'MTc2NDY0MDkyMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a77731313d5fdf8',t:'MTc2NDY0MzEyMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
