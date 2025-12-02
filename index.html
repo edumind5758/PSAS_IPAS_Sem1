@@ -3,7 +3,8 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rangkuman Materi Kelas 6 SD</title>
+  <title>Materi Pembelajaran Kelas 6 SD</title>
+  <script src="/_sdk/element_sdk.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
         body {
@@ -17,12 +18,12 @@
             height: 100%;
         }
         
-        .tab-button {
-            transition: all 0.2s ease;
+        .chapter-button {
+            transition: all 0.3s ease;
         }
         
-        .tab-button.active {
-            border-bottom: 3px solid;
+        .chapter-button:hover {
+            transform: translateX(8px);
         }
         
         .content-section {
@@ -32,7 +33,7 @@
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(10px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -41,1288 +42,892 @@
         }
         
         .topic-item {
-            cursor: pointer;
             transition: all 0.2s ease;
         }
         
         .topic-item:hover {
             transform: scale(1.02);
         }
-        
-        .collapse-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-        
-        .collapse-content.active {
-            max-height: 5000px;
-        }
-        
-        .info-box .detail-section {
-            line-height: 1.8;
-        }
-        
-        .info-box ul {
-            line-height: 1.8;
-        }
-        
-        .fun-fact {
-            background: linear-gradient(135deg, #fef3c7, #fde68a);
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 15px;
-            border-left: 5px solid #f59e0b;
-            font-size: 14px;
-        }
     </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
-  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
  </head>
  <body>
   <div id="app" class="w-full h-full"></div>
   <script>
-        const config = {
-            main_title: "Rangkuman Materi Interaktif",
-            subtitle: "Kelas 6 SD - Semester 2",
-            primary_color: "#3B82F6",
-            secondary_color: "#EFF6FF",
-            accent_color: "#1E40AF",
-            text_color: "#1F2937",
+        const defaultConfig = {
+            app_title: "Materi Pembelajaran Kelas 6 SD",
+            welcome_text: "Pelajari semua materi dengan lengkap dan detail!",
+            primary_color: "#2563EB",
             background_color: "#F9FAFB",
+            surface_color: "#FFFFFF",
+            text_color: "#1F2937",
+            accent_color: "#3B82F6",
             font_family: "Segoe UI",
             font_size: 16
         };
 
         const materiData = {
             ipa: {
-                title: "IPA - Rangka dan Otot Manusia",
+                title: "IPA - Rangka & Otot Manusia",
                 icon: "🦴",
-                topics: [
+                color: "#3B82F6",
+                chapters: [
                     {
-                        title: "Tulang Penyusun Rangka Lengan",
-                        content: `
-                            <div class="info-box">
-                                <h4 style="font-weight: bold; margin-bottom: 12px; color: #1e40af;">💪 Struktur Tulang Lengan</h4>
-                                
-                                <div class="detail-section">
-                                    <p style="margin-bottom: 8px;"><strong>1️⃣ LENGAN ATAS</strong></p>
-                                    <ul style="margin-left: 20px; margin-bottom: 12px;">
-                                        <li><strong>Tulang Lengan Atas (Humerus)</strong> - Tulang panjang yang menghubungkan bahu dengan siku</li>
-                                        <li>Tempat melekat otot bisep dan trisep</li>
-                                    </ul>
-                                    
-                                    <p style="margin-bottom: 8px;"><strong>2️⃣ LENGAN BAWAH</strong></p>
-                                    <ul style="margin-left: 20px; margin-bottom: 12px;">
-                                        <li><strong>Tulang Pengumpil (Radius)</strong> - Tulang di sisi ibu jari, dapat berputar</li>
-                                        <li><strong>Tulang Hasta (Ulna)</strong> - Tulang di sisi kelingking, lebih panjang</li>
-                                    </ul>
-                                    
-                                    <p style="margin-bottom: 8px;"><strong>3️⃣ TANGAN</strong></p>
-                                    <ul style="margin-left: 20px;">
-                                        <li><strong>Tulang Pergelangan Tangan (Karpal)</strong> - 8 tulang kecil</li>
-                                        <li><strong>Tulang Telapak Tangan (Metakarpal)</strong> - 5 tulang</li>
-                                        <li><strong>Tulang Jari Tangan (Falang)</strong> - 14 tulang</li>
-                                    </ul>
-                                </div>
-                                
-                                <div class="fun-fact">
-                                    <strong>💡 Tahukah Kamu?</strong> Satu tangan manusia memiliki 27 tulang! Lebih dari seperempat total tulang tubuh manusia (206 tulang) ada di kedua tangan kita.
-                                </div>
-                            </div>
-                        `
+                        title: "A. Rangka Manusia",
+                        topics: [
+                            {
+                                subtitle: "1. Fungsi Rangka",
+                                content: `• Membentuk tubuh manusia
+• Menegakkan tubuh
+• Melindungi organ-organ penting
+• Tempat melekat otot
+• Tempat pembentukan sel darah merah dan putih
+• Alat gerak pasif`
+                            },
+                            {
+                                subtitle: "2. Jenis-Jenis Tulang",
+                                content: `<strong>a) Tulang Pipa (Panjang):</strong>
+   - Tulang lengan atas (humerus)
+   - Tulang pengumpil (radius) dan tulang hasta (ulna) - lengan bawah
+   - Tulang paha (femur) - tulang terpanjang
+   - Tulang kering (tibia) dan tulang betis (fibula)
+
+<strong>b) Tulang Pipih:</strong>
+   - Tulang tengkorak (melindungi otak)
+   - Tulang rusuk (melindungi jantung dan paru-paru)
+   - Tulang belikat (scapula)
+   - Tulang dada (sternum)
+   - Tulang panggul
+
+<strong>c) Tulang Pendek:</strong>
+   - Tulang pergelangan tangan (karpal)
+   - Tulang pergelangan kaki (tarsal)
+   - Ruas tulang belakang (vertebra)`
+                            },
+                            {
+                                subtitle: "3. Bagian-Bagian Rangka Lengkap",
+                                content: `• Tengkorak: 8 tulang pelindung otak
+• Tulang muka: 14 tulang pembentuk wajah
+• Tulang belakang: 33 ruas (7 leher, 12 dada, 5 pinggang, 5 kelangkang menyatu, 4 ekor menyatu)
+• Tulang rusuk: 12 pasang (7 pasang sejati, 3 pasang palsu, 2 pasang melayang)
+• Tulang dada: Melindungi jantung bagian depan
+• Tulang panggul: Menopang berat badan, melindungi organ reproduksi
+• Tulang lengan: Lengan atas (humerus), pengumpil (radius), hasta (ulna)
+• Tulang tangan: Pergelangan (8), telapak (5), jari (14)
+• Tulang kaki: Paha (femur), tempurung lutut (patela), kering (tibia), betis (fibula)
+• Tulang kaki: Pergelangan (7), telapak (5), jari (14)`
+                            }
+                        ]
                     },
                     {
-                        title: "Tulang Pelindung Jantung",
-                        content: `
-                            <div class="info-box">
-                                <h4 style="font-weight: bold; margin-bottom: 12px; color: #1e40af;">❤️ Pelindung Organ Vital</h4>
-                                
-                                <div class="detail-section">
-                                    <p style="margin-bottom: 12px;"><strong>🛡️ TULANG RUSUK (Costae)</strong></p>
-                                    <ul style="margin-left: 20px; margin-bottom: 15px;">
-                                        <li>Jumlah: <strong>12 pasang (24 tulang)</strong></li>
-                                        <li><strong>7 pasang rusuk sejati</strong> - terhubung langsung ke tulang dada</li>
-                                        <li><strong>3 pasang rusuk palsu</strong> - terhubung tidak langsung</li>
-                                        <li><strong>2 pasang rusuk melayang</strong> - tidak terhubung ke tulang dada</li>
-                                    </ul>
-                                    
-                                    <p style="margin-bottom: 12px;"><strong>🦴 TULANG DADA (Sternum)</strong></p>
-                                    <ul style="margin-left: 20px; margin-bottom: 15px;">
-                                        <li>Tulang pipih di tengah dada</li>
-                                        <li>Tempat melekatnya tulang rusuk</li>
-                                        <li>Melindungi jantung dari benturan depan</li>
-                                    </ul>
-                                    
-                                    <p style="background: #fef3c7; padding: 12px; border-radius: 8px; border-left: 4px solid #f59e0b;">
-                                        <strong>🎯 Organ yang Dilindungi:</strong><br>
-                                        ❤️ Jantung - Organ pemompa darah<br>
-                                        🫁 Paru-paru - Organ pernapasan<br>
-                                        🩸 Pembuluh darah besar
-                                    </p>
-                                </div>
-                                
-                                <div class="fun-fact">
-                                    <strong>💡 Fakta Menarik:</strong> Tulang rusuk manusia bisa tumbuh kembali jika rusak! Ini adalah satu-satunya tulang yang memiliki kemampuan regenerasi sangat baik.
-                                </div>
-                            </div>
-                        `
+                        title: "B. Otot Manusia",
+                        topics: [
+                            {
+                                subtitle: "1. Jenis Otot dan Ciri-Cirinya",
+                                content: `<strong>a) Otot Lurik (Otot Rangka):</strong>
+   - Berbentuk silindris panjang
+   - Memiliki garis-garis melintang (lurik)
+   - Memiliki banyak inti sel di tepi
+   - Menempel pada tulang
+   - Bekerja di bawah kesadaran (disengaja)
+   - Bekerja cepat tetapi mudah lelah
+   - Dikendalikan saraf sadar (somatik)
+   - Contoh: otot lengan, kaki, perut, dada
+
+<strong>b) Otot Polos:</strong>
+   - Berbentuk gelendong (ujung lancip)
+   - Tidak memiliki garis melintang (polos)
+   - Memiliki satu inti sel di tengah
+   - Bekerja di luar kesadaran (otomatis)
+   - Bekerja lambat tetapi tidak mudah lelah
+   - Dikendalikan saraf otonom
+   - Contoh: otot lambung, usus, pembuluh darah, kandung kemih
+
+<strong>c) Otot Jantung:</strong>
+   - Berbentuk silindris bercabang
+   - Memiliki garis melintang (seperti otot lurik)
+   - Memiliki satu inti sel di tengah
+   - Hanya ada di jantung
+   - Bekerja otomatis (di luar kesadaran)
+   - Bekerja terus menerus tanpa henti
+   - Tidak pernah lelah
+   - Dikendalikan saraf otonom`
+                            },
+                            {
+                                subtitle: "2. Fungsi Saraf Otonom",
+                                content: `• Mengendalikan kerja otot polos dan otot jantung
+• Bekerja tanpa disadari (otomatis)
+• Mengatur detak jantung
+• Mengatur pernapasan
+• Mengatur pencernaan
+• Mengatur pelebaran dan penyempitan pembuluh darah
+• Terdiri dari: Saraf Simpatik dan Parasimpatik`
+                            }
+                        ]
                     },
                     {
-                        title: "Tulang dengan Bentuk Pipih",
-                        content: `
-                            <div class="info-box">
-                                <h4 style="font-weight: bold; margin-bottom: 12px; color: #1e40af;">📋 Jenis-Jenis Tulang Pipih</h4>
-                                
-                                <div class="detail-section">
-                                    <p style="margin-bottom: 12px;"><strong>✨ CIRI-CIRI TULANG PIPIH:</strong></p>
-                                    <ul style="margin-left: 20px; margin-bottom: 15px;">
-                                        <li>Berbentuk <strong>pipih dan lebar</strong></li>
-                                        <li>Fungsi utama: <strong>melindungi organ dalam</strong></li>
-                                        <li>Tempat <strong>melekatnya otot</strong></li>
-                                    </ul>
-                                    
-                                    <p style="margin-bottom: 12px;"><strong>🦴 CONTOH TULANG PIPIH:</strong></p>
-                                    <div style="background: linear-gradient(135deg, #dbeafe, #bfdbfe); padding: 15px; border-radius: 10px; margin-bottom: 10px;">
-                                        <p style="margin: 0;"><strong>1. Tulang Tengkorak</strong></p>
-                                        <p style="margin: 5px 0 0 20px;">🧠 Melindungi otak dari benturan</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 15px; border-radius: 10px; margin-bottom: 10px;">
-                                        <p style="margin: 0;"><strong>2. Tulang Rusuk</strong></p>
-                                        <p style="margin: 5px 0 0 20px;">❤️ Melindungi jantung dan paru-paru</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); padding: 15px; border-radius: 10px; margin-bottom: 10px;">
-                                        <p style="margin: 0;"><strong>3. Tulang Dada (Sternum)</strong></p>
-                                        <p style="margin: 5px 0 0 20px;">🛡️ Melindungi organ dada bagian depan</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fecaca, #fca5a5); padding: 15px; border-radius: 10px; margin-bottom: 10px;">
-                                        <p style="margin: 0;"><strong>4. Tulang Belikat (Skapula)</strong></p>
-                                        <p style="margin: 5px 0 0 20px;">💪 Tempat melekat otot bahu dan punggung</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #e9d5ff, #d8b4fe); padding: 15px; border-radius: 10px;">
-                                        <p style="margin: 0;"><strong>5. Tulang Panggul</strong></p>
-                                        <p style="margin: 5px 0 0 20px;">🦴 Melindungi organ reproduksi dan pencernaan</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="fun-fact">
-                                    <strong>💡 Fakta Unik:</strong> Tulang tengkorak dewasa terdiri dari 22 tulang pipih yang saling menyatu dengan kuat!
-                                </div>
-                            </div>
-                        `
+                        title: "C. Sendi",
+                        topics: [
+                            {
+                                subtitle: "Jenis Sendi dan Arah Geraknya",
+                                content: `<strong>a) Sendi Engsel:</strong>
+   - Arah gerak: Satu arah (maju-mundur)
+   - Seperti engsel pintu
+   - Contoh: Siku, lutut, ruas jari, mata kaki
+
+<strong>b) Sendi Peluru:</strong>
+   - Arah gerak: Ke segala arah (360°)
+   - Seperti bola dalam mangkuk
+   - Contoh: Bahu, panggul
+
+<strong>c) Sendi Putar:</strong>
+   - Arah gerak: Berputar/rotasi
+   - Contoh: Leher (tengkorak dengan tulang atlas), lengan bawah
+
+<strong>d) Sendi Geser:</strong>
+   - Arah gerak: Menggeser
+   - Contoh: Pergelangan tangan, pergelangan kaki, tulang belakang
+
+<strong>e) Sendi Pelana:</strong>
+   - Arah gerak: Dua arah (maju-mundur, kiri-kanan)
+   - Contoh: Ibu jari tangan
+
+<strong>f) Sendi Kaku:</strong>
+   - Tidak dapat bergerak
+   - Contoh: Tulang tengkorak`
+                            }
+                        ]
                     },
                     {
-                        title: "Ciri-Ciri Otot",
-                        content: `
-                            <div class="info-box">
-                                <h4 style="font-weight: bold; margin-bottom: 12px; color: #1e40af;">💪 3 Jenis Otot Manusia</h4>
-                                
-                                <div class="detail-section">
-                                    <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #f59e0b;">
-                                        <p style="margin-bottom: 8px;"><strong>1️⃣ OTOT LURIK (Otot Rangka)</strong></p>
-                                        <ul style="margin-left: 20px; margin-top: 8px;">
-                                            <li>✅ Bekerja di bawah <strong>kesadaran</strong> (disengaja)</li>
-                                            <li>📍 Menempel pada <strong>rangka/tulang</strong></li>
-                                            <li>🔬 Bentuk <strong>silindris panjang</strong> dengan garis melintang</li>
-                                            <li>🧬 Memiliki <strong>banyak inti sel</strong></li>
-                                            <li>⚡ Kontraksi <strong>cepat</strong> tapi mudah lelah</li>
-                                            <li>🎯 Contoh: Otot lengan, kaki, perut</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #dbeafe, #bfdbfe); padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #3b82f6;">
-                                        <p style="margin-bottom: 8px;"><strong>2️⃣ OTOT POLOS</strong></p>
-                                        <ul style="margin-left: 20px; margin-top: 8px;">
-                                            <li>🚫 Bekerja di luar <strong>kesadaran</strong> (otomatis)</li>
-                                            <li>📍 Terdapat pada <strong>organ dalam</strong></li>
-                                            <li>🔬 Bentuk <strong>gelendong</strong> dengan ujung lancip</li>
-                                            <li>🧬 Memiliki <strong>satu inti sel</strong> di tengah</li>
-                                            <li>⏱️ Kontraksi <strong>lambat</strong> tapi tidak mudah lelah</li>
-                                            <li>🎯 Contoh: Otot lambung, usus, pembuluh darah</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fecaca, #fca5a5); padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #dc2626;">
-                                        <p style="margin-bottom: 8px;"><strong>3️⃣ OTOT JANTUNG</strong></p>
-                                        <ul style="margin-left: 20px; margin-top: 8px;">
-                                            <li>🚫 Bekerja di luar <strong>kesadaran</strong> (otomatis)</li>
-                                            <li>📍 Hanya ada di <strong>jantung</strong></li>
-                                            <li>🔬 Bentuk <strong>silindris bercabang</strong> dengan garis melintang</li>
-                                            <li>❤️ Kontraksi <strong>ritmis</strong> dan tidak pernah lelah</li>
-                                            <li>⚡ Bekerja <strong>24/7</strong> sepanjang hidup</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                
-                                <div class="fun-fact">
-                                    <strong>💡 Fakta Mencengangkan:</strong> Otot jantung berkontraksi lebih dari 100.000 kali setiap hari!
-                                </div>
-                            </div>
-                        `
+                        title: "D. Gangguan Kesehatan Tulang",
+                        topics: [
+                            {
+                                subtitle: "1. Kelainan Bentuk Tulang Belakang",
+                                content: `• Lordosis: Melengkung ke depan (perut buncit)
+• Kifosis: Melengkung ke belakang (bungkuk)
+• Skoliosis: Melengkung ke samping`
+                            },
+                            {
+                                subtitle: "2. Penyakit Tulang",
+                                content: `• Osteoporosis: Tulang keropos, rapuh, mudah patah
+• Rakitis: Tulang lunak dan bengkok (kekurangan vitamin D)
+• Osteomalasia: Pelunakan tulang pada orang dewasa
+• Artritis: Peradangan sendi
+• Patah tulang (fraktura): Tulang retak atau patah`
+                            }
+                        ]
                     },
                     {
-                        title: "Nama Sendi dan Arah Geraknya",
-                        content: `
-                            <div class="info-box">
-                                <h4 style="font-weight: bold; margin-bottom: 12px; color: #1e40af;">🔄 Jenis-Jenis Sendi dan Gerakannya</h4>
-                                
-                                <div class="detail-section">
-                                    <div style="background: linear-gradient(135deg, #dbeafe, #bfdbfe); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #3b82f6;">
-                                        <p style="margin-bottom: 8px; font-weight: bold;">1️⃣ SENDI PELURU</p>
-                                        <p style="margin-left: 20px; margin-bottom: 5px;"><strong>Gerakan:</strong> Ke segala arah (360°)</p>
-                                        <p style="margin-left: 20px; margin-bottom: 5px;"><strong>Lokasi:</strong> 🦴 Bahu dan panggul</p>
-                                        <p style="margin-left: 20px;">Contoh gerakan: memutar lengan, menendang</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #f59e0b;">
-                                        <p style="margin-bottom: 8px; font-weight: bold;">2️⃣ SENDI ENGSEL</p>
-                                        <p style="margin-left: 20px; margin-bottom: 5px;"><strong>Gerakan:</strong> Satu arah (seperti pintu)</p>
-                                        <p style="margin-left: 20px; margin-bottom: 5px;"><strong>Lokasi:</strong> 🦵 Siku, lutut, dan jari</p>
-                                        <p style="margin-left: 20px;">Contoh gerakan: menekuk dan meluruskan</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #10b981;">
-                                        <p style="margin-bottom: 8px; font-weight: bold;">3️⃣ SENDI PUTAR</p>
-                                        <p style="margin-left: 20px; margin-bottom: 5px;"><strong>Gerakan:</strong> Berputar pada porosnya</p>
-                                        <p style="margin-left: 20px; margin-bottom: 5px;"><strong>Lokasi:</strong> 🔄 Leher (atlas-axis)</p>
-                                        <p style="margin-left: 20px;">Contoh gerakan: menggelengkan kepala kanan-kiri</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fecaca, #fca5a5); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #dc2626;">
-                                        <p style="margin-bottom: 8px; font-weight: bold;">4️⃣ SENDI PELANA</p>
-                                        <p style="margin-left: 20px; margin-bottom: 5px;"><strong>Gerakan:</strong> Dua arah (depan-belakang & kanan-kiri)</p>
-                                        <p style="margin-left: 20px; margin-bottom: 5px;"><strong>Lokasi:</strong> 👍 Ibu jari</p>
-                                        <p style="margin-left: 20px;">Contoh gerakan: menggerakkan ibu jari</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #e9d5ff, #d8b4fe); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #a855f7;">
-                                        <p style="margin-bottom: 8px; font-weight: bold;">5️⃣ SENDI GESER</p>
-                                        <p style="margin-left: 20px; margin-bottom: 5px;"><strong>Gerakan:</strong> Bergeser (terbatas)</p>
-                                        <p style="margin-left: 20px; margin-bottom: 5px;"><strong>Lokasi:</strong> 🦴 Tulang belakang, pergelangan tangan</p>
-                                        <p style="margin-left: 20px;">Contoh gerakan: membungkuk</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fed7aa, #fdba74); padding: 15px; border-radius: 10px; border-left: 5px solid #ea580c;">
-                                        <p style="margin-bottom: 8px; font-weight: bold;">6️⃣ SENDI KAKU (Sinartrosis)</p>
-                                        <p style="margin-left: 20px; margin-bottom: 5px;"><strong>Gerakan:</strong> Tidak dapat bergerak</p>
-                                        <p style="margin-left: 20px; margin-bottom: 5px;"><strong>Lokasi:</strong> 🧠 Tulang tengkorak</p>
-                                        <p style="margin-left: 20px;">Fungsi: melindungi otak</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="fun-fact">
-                                    <strong>💡 Tahukah Kamu?</strong> Tubuh manusia memiliki lebih dari 200 sendi yang memungkinkan kita bergerak dengan bebas!
-                                </div>
-                            </div>
-                        `
-                    },
-                    {
-                        title: "Fungsi Saraf Otonom",
-                        content: `
-                            <div class="info-box">
-                                <h4 style="font-weight: bold; margin-bottom: 12px; color: #1e40af;">🧠 Sistem Saraf Otonom</h4>
-                                
-                                <div class="detail-section">
-                                    <p style="background: #dbeafe; padding: 12px; border-radius: 8px; margin-bottom: 15px;">
-                                        <strong>📌 Apa itu Saraf Otonom?</strong><br>
-                                        Saraf yang mengatur kerja organ dalam <strong>secara otomatis tanpa disadari</strong> (tidak bisa dikendalikan dengan kehendak kita).
-                                    </p>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #f59e0b;">
-                                        <p style="margin-bottom: 8px; font-weight: bold;">⚡ SARAF SIMPATIK</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Fungsi:</strong> Aktif saat tubuh dalam keadaan <strong>AKTIF, STRES, atau DARURAT</strong></p>
-                                        <p style="margin-left: 15px; margin-bottom: 5px;"><strong>Pengaruh pada tubuh:</strong></p>
-                                        <ul style="margin-left: 35px;">
-                                            <li>💓 Mempercepat detak jantung</li>
-                                            <li>🫁 Melebarkan bronkus (saluran napas)</li>
-                                            <li>👁️ Melebarkan pupil mata</li>
-                                            <li>🍽️ Menghambat pencernaan</li>
-                                            <li>😰 Merangsang kelenjar keringat</li>
-                                        </ul>
-                                        <p style="margin-left: 15px; margin-top: 8px;">💡 <strong>Contoh:</strong> Saat ketakutan atau lari cepat</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #10b981;">
-                                        <p style="margin-bottom: 8px; font-weight: bold;">😌 SARAF PARASIMPATIK</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Fungsi:</strong> Aktif saat tubuh dalam keadaan <strong>ISTIRAHAT atau SANTAI</strong></p>
-                                        <p style="margin-left: 15px; margin-bottom: 5px;"><strong>Pengaruh pada tubuh:</strong></p>
-                                        <ul style="margin-left: 35px;">
-                                            <li>💓 Memperlambat detak jantung</li>
-                                            <li>🫁 Mempersempit bronkus</li>
-                                            <li>👁️ Mempersempit pupil mata</li>
-                                            <li>🍽️ Merangsang pencernaan</li>
-                                            <li>💤 Menghemat energi</li>
-                                        </ul>
-                                        <p style="margin-left: 15px; margin-top: 8px;">💡 <strong>Contoh:</strong> Saat tidur atau beristirahat</p>
-                                    </div>
-                                    
-                                    <p style="background: #fef3c7; padding: 12px; border-radius: 8px; border-left: 4px solid #f59e0b;">
-                                        <strong>⚖️ Kerja Saraf Otonom:</strong><br>
-                                        Saraf Simpatik dan Parasimpatik bekerja <strong>berlawanan</strong> tapi <strong>seimbang</strong> untuk menjaga tubuh tetap berfungsi dengan baik.
-                                    </p>
-                                </div>
-                                
-                                <div class="fun-fact">
-                                    <strong>💡 Fakta Menarik:</strong> Jantung kita berdetak otomatis karena diatur oleh saraf otonom, bahkan saat kita tidur!
-                                </div>
-                            </div>
-                        `
-                    },
-                    {
-                        title: "Gangguan Kesehatan pada Tulang",
-                        content: `
-                            <div class="info-box">
-                                <h4 style="font-weight: bold; margin-bottom: 12px; color: #1e40af;">🏥 Jenis-Jenis Gangguan Tulang</h4>
-                                
-                                <div class="detail-section">
-                                    <div style="background: linear-gradient(135deg, #fecaca, #fca5a5); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #dc2626;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">1️⃣ OSTEOPOROSIS (Tulang Keropos)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 5px;"><strong>Ciri:</strong> Tulang menjadi rapuh dan mudah patah</p>
-                                        <p style="margin-left: 15px; margin-bottom: 5px;"><strong>Penyebab:</strong> Kekurangan kalsium dan vitamin D</p>
-                                        <p style="margin-left: 15px;"><strong>Pencegahan:</strong> 🥛 Minum susu, berjemur pagi</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fed7aa, #fdba74); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #ea580c;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">2️⃣ LORDOSIS</p>
-                                        <p style="margin-left: 15px; margin-bottom: 5px;"><strong>Ciri:</strong> Tulang belakang melengkung ke depan (cekung)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 5px;"><strong>Penyebab:</strong> Postur duduk yang salah, perut buncit</p>
-                                        <p style="margin-left: 15px;"><strong>Pencegahan:</strong> 🪑 Duduk tegak, olahraga</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #f59e0b;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">3️⃣ KIFOSIS (Bungkuk)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 5px;"><strong>Ciri:</strong> Tulang belakang melengkung ke belakang (bungkuk)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 5px;"><strong>Penyebab:</strong> Membawa beban terlalu berat, postur salah</p>
-                                        <p style="margin-left: 15px;"><strong>Pencegahan:</strong> 🎒 Hindari tas terlalu berat</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #e9d5ff, #d8b4fe); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #a855f7;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">4️⃣ SKOLIOSIS</p>
-                                        <p style="margin-left: 15px; margin-bottom: 5px;"><strong>Ciri:</strong> Tulang belakang melengkung ke samping (S atau C)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 5px;"><strong>Penyebab:</strong> Bawaan lahir atau kebiasaan duduk miring</p>
-                                        <p style="margin-left: 15px;"><strong>Pencegahan:</strong> 🧘 Posisi duduk seimbang</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #dbeafe, #bfdbfe); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #3b82f6;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">5️⃣ RAKITIS</p>
-                                        <p style="margin-left: 15px; margin-bottom: 5px;"><strong>Ciri:</strong> Kaki berbentuk O atau X pada anak</p>
-                                        <p style="margin-left: 15px; margin-bottom: 5px;"><strong>Penyebab:</strong> Kekurangan vitamin D dan kalsium</p>
-                                        <p style="margin-left: 15px;"><strong>Pencegahan:</strong> ☀️ Berjemur, makan bergizi</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); padding: 15px; border-radius: 10px; border-left: 5px solid #10b981;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">6️⃣ FRAKTURA (Patah Tulang)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 5px;"><strong>Ciri:</strong> Tulang retak atau patah</p>
-                                        <p style="margin-left: 15px; margin-bottom: 5px;"><strong>Penyebab:</strong> Kecelakaan, benturan keras</p>
-                                        <p style="margin-left: 15px;"><strong>Penanganan:</strong> 🏥 Dibidai dan ke dokter</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="fun-fact">
-                                    <strong>💡 Tips Sehat:</strong> Minum susu, berjemur pagi jam 7-9, duduk tegak, dan olahraga teratur untuk tulang sehat!
-                                </div>
-                            </div>
-                        `
-                    },
-                    {
-                        title: "Zat Gizi yang Dibutuhkan Tulang",
-                        content: `
-                            <div class="info-box">
-                                <h4 style="font-weight: bold; margin-bottom: 12px; color: #1e40af;">🥛 Nutrisi Penting untuk Tulang Sehat</h4>
-                                
-                                <div class="detail-section">
-                                    <div style="background: linear-gradient(135deg, #dbeafe, #bfdbfe); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #3b82f6;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">1️⃣ KALSIUM (Ca)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>🎯 Fungsi:</strong></p>
-                                        <ul style="margin-left: 35px; margin-bottom: 8px;">
-                                            <li>Membentuk dan menguatkan tulang</li>
-                                            <li>Mencegah osteoporosis (tulang keropos)</li>
-                                            <li>Membantu pembekuan darah</li>
-                                        </ul>
-                                        <p style="margin-left: 15px;"><strong>🍽️ Sumber:</strong> Susu, keju, yogurt, ikan teri, bayam, brokoli</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #f59e0b;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">2️⃣ VITAMIN D</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>🎯 Fungsi:</strong></p>
-                                        <ul style="margin-left: 35px; margin-bottom: 8px;">
-                                            <li>Membantu penyerapan kalsium di usus</li>
-                                            <li>Mencegah rakitis pada anak</li>
-                                            <li>Menjaga kepadatan tulang</li>
-                                        </ul>
-                                        <p style="margin-left: 15px;"><strong>🍽️ Sumber:</strong> ☀️ Sinar matahari pagi, telur, ikan salmon, susu</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #10b981;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">3️⃣ FOSFOR (P)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>🎯 Fungsi:</strong></p>
-                                        <ul style="margin-left: 35px; margin-bottom: 8px;">
-                                            <li>Membentuk struktur tulang bersama kalsium</li>
-                                            <li>Memperkuat gigi</li>
-                                            <li>Membantu metabolisme energi</li>
-                                        </ul>
-                                        <p style="margin-left: 15px;"><strong>🍽️ Sumber:</strong> Daging, ikan, telur, kacang-kacangan, susu</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fecaca, #fca5a5); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #dc2626;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">4️⃣ PROTEIN</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>🎯 Fungsi:</strong></p>
-                                        <ul style="margin-left: 35px; margin-bottom: 8px;">
-                                            <li>Membangun jaringan tulang</li>
-                                            <li>Memperbaiki tulang yang rusak</li>
-                                            <li>Membentuk kolagen pada tulang</li>
-                                        </ul>
-                                        <p style="margin-left: 15px;"><strong>🍽️ Sumber:</strong> Daging, ikan, telur, tahu, tempe, kacang-kacangan</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #e9d5ff, #d8b4fe); padding: 15px; border-radius: 10px; border-left: 5px solid #a855f7;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">5️⃣ VITAMIN K</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>🎯 Fungsi:</strong></p>
-                                        <ul style="margin-left: 35px; margin-bottom: 8px;">
-                                            <li>Membantu pembentukan tulang</li>
-                                            <li>Mencegah pengeroposan tulang</li>
-                                        </ul>
-                                        <p style="margin-left: 15px;"><strong>🍽️ Sumber:</strong> Bayam, brokoli, kangkung, kubis</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="fun-fact">
-                                    <strong>💡 Tips Tulang Sehat:</strong> Berjemur pagi jam 7-9 selama 15 menit + minum susu setiap hari = tulang kuat sepanjang hidup! 🌞🥛
-                                </div>
-                            </div>
-                        `
-                    },
-                    {
-                        title: "Fungsi Rangka Manusia",
-                        content: `
-                            <div class="info-box">
-                                <h4 style="font-weight: bold; margin-bottom: 12px; color: #1e40af;">🦴 5 Fungsi Utama Rangka</h4>
-                                
-                                <div class="detail-section">
-                                    <div style="background: linear-gradient(135deg, #dbeafe, #bfdbfe); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #3b82f6;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">1️⃣ MEMBENTUK TUBUH</p>
-                                        <p style="margin-left: 15px;">Rangka memberi bentuk dan postur tubuh manusia. Tanpa rangka, tubuh kita tidak akan memiliki bentuk tetap.</p>
-                                        <p style="margin-left: 15px; margin-top: 8px;">💡 <strong>Contoh:</strong> Tinggi badan, bentuk wajah, postur tegak</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #f59e0b;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">2️⃣ MENEGAKKAN TUBUH</p>
-                                        <p style="margin-left: 15px;">Rangka berfungsi sebagai penyokong tubuh agar bisa berdiri tegak dan melawan gravitasi.</p>
-                                        <p style="margin-left: 15px; margin-top: 8px;">💡 <strong>Contoh:</strong> Tulang belakang menopang tubuh, tulang kaki menahan berat badan</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fecaca, #fca5a5); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #dc2626;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">3️⃣ MELINDUNGI ORGAN DALAM</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;">Rangka melindungi organ-organ vital dari benturan dan cedera.</p>
-                                        <ul style="margin-left: 35px;">
-                                            <li>🧠 Tulang tengkorak → melindungi otak</li>
-                                            <li>❤️ Tulang rusuk → melindungi jantung dan paru-paru</li>
-                                            <li>🦴 Tulang belakang → melindungi sumsum tulang belakang</li>
-                                            <li>🫄 Tulang panggul → melindungi organ reproduksi</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #10b981;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">4️⃣ TEMPAT MELEKATNYA OTOT (Alat Gerak Pasif)</p>
-                                        <p style="margin-left: 15px;">Rangka menjadi tempat otot menempel. Otot dan tulang bekerja sama untuk menghasilkan gerakan.</p>
-                                        <p style="margin-left: 15px; margin-top: 8px;">💡 <strong>Contoh:</strong> Otot bisep dan trisep menempel pada tulang lengan untuk gerakan menekuk dan meluruskan</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #e9d5ff, #d8b4fe); padding: 15px; border-radius: 10px; border-left: 5px solid #a855f7;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">5️⃣ MEMBUAT SEL DARAH (Hematopoiesis)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;">Sumsum tulang di dalam tulang panjang menghasilkan sel-sel darah.</p>
-                                        <ul style="margin-left: 35px;">
-                                            <li>🔴 Sel darah merah (eritrosit)</li>
-                                            <li>⚪ Sel darah putih (leukosit)</li>
-                                            <li>🩸 Keping darah (trombosit)</li>
-                                        </ul>
-                                        <p style="margin-left: 15px; margin-top: 8px;">📍 Lokasi: Tulang paha, tulang lengan atas, tulang rusuk</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="fun-fact">
-                                    <strong>💡 Fakta Luar Biasa:</strong> Rangka manusia dewasa memiliki 206 tulang, sedangkan bayi lahir dengan 270 tulang yang kemudian menyatu saat tumbuh dewasa!
-                                </div>
-                            </div>
-                        `
+                        title: "E. Zat Gizi untuk Tulang",
+                        topics: [
+                            {
+                                subtitle: "Nutrisi Penting",
+                                content: `<strong>1. Kalsium (Ca):</strong>
+   - Fungsi: Pembentukan dan penguatan tulang dan gigi
+   - Sumber: Susu, keju, ikan teri, bayam, kacang-kacangan
+
+<strong>2. Fosfor (P):</strong>
+   - Fungsi: Membantu pembentukan tulang bersama kalsium
+   - Sumber: Susu, telur, daging, ikan, kacang-kacangan
+
+<strong>3. Vitamin D:</strong>
+   - Fungsi: Membantu penyerapan kalsium
+   - Sumber: Sinar matahari pagi, minyak ikan, telur, susu
+
+<strong>4. Protein:</strong>
+   - Fungsi: Membentuk jaringan tulang dan otot
+   - Sumber: Daging, ikan, telur, tahu, tempe
+
+<strong>5. Vitamin C:</strong>
+   - Fungsi: Membantu pembentukan kolagen untuk tulang
+   - Sumber: Jeruk, tomat, jambu biji, pepaya`
+                            }
+                        ]
                     }
                 ]
             },
             sejarah: {
                 title: "IPS - Sejarah Indonesia",
                 icon: "📜",
-                topics: [
+                color: "#F59E0B",
+                chapters: [
                     {
-                        title: "Latar Belakang Kedatangan Bangsa Barat",
-                        content: `
-                            <div class="info-box">
-                                <h4 style="font-weight: bold; margin-bottom: 12px; color: #1e40af;">🌍 Mengapa Bangsa Barat Datang ke Indonesia?</h4>
-                                
-                                <div class="detail-section">
-                                    <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #f59e0b;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">1️⃣ JATUHNYA KONSTANTINOPEL (1453)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;">Kota Konstantinopel (Turki) dikuasai oleh Kesultanan Utsmaniyah (Turki).</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Dampaknya:</strong></p>
-                                        <ul style="margin-left: 35px;">
-                                            <li>Jalur perdagangan darat ke Asia ditutup</li>
-                                            <li>Harga rempah-rempah di Eropa naik drastis</li>
-                                            <li>Bangsa Eropa harus mencari jalur baru ke Asia</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #dbeafe, #bfdbfe); padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #3b82f6;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">2️⃣ SEMANGAT 3G (GOLD, GLORY, GOSPEL)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>⭐ GOLD (Kekayaan)</strong></p>
-                                        <ul style="margin-left: 35px; margin-bottom: 10px;">
-                                            <li>Mencari rempah-rempah dan emas</li>
-                                            <li>Mendapatkan kekayaan sebanyak-banyaknya</li>
-                                        </ul>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>⭐ GLORY (Kejayaan)</strong></p>
-                                        <ul style="margin-left: 35px; margin-bottom: 10px;">
-                                            <li>Menunjukkan kehebatan negara mereka</li>
-                                            <li>Menguasai wilayah baru</li>
-                                        </ul>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>⭐ GOSPEL (Agama)</strong></p>
-                                        <ul style="margin-left: 35px;">
-                                            <li>Menyebarkan agama Kristen</li>
-                                            <li>Mengkristenkan penduduk pribumi</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #10b981;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">3️⃣ PERKEMBANGAN ILMU PENGETAHUAN</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Penemuan Penting:</strong></p>
-                                        <ul style="margin-left: 35px;">
-                                            <li>🧭 <strong>Kompas</strong> - untuk menentukan arah</li>
-                                            <li>🗺️ <strong>Peta</strong> - untuk navigasi pelayaran</li>
-                                            <li>⛵ <strong>Kapal Layar Modern</strong> - lebih cepat dan kuat</li>
-                                            <li>🔭 <strong>Teori Bumi Bulat</strong> - menginspirasi pelayaran keliling dunia</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fecaca, #fca5a5); padding: 15px; border-radius: 10px; border-left: 5px solid #dc2626;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">4️⃣ REMPAH-REMPAH INDONESIA SANGAT MAHAL</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;">Indonesia (Nusantara) adalah <strong>satu-satunya penghasil rempah-rempah terbaik</strong> di dunia!</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Rempah-rempah yang dicari:</strong></p>
-                                        <ul style="margin-left: 35px;">
-                                            <li>🌰 Pala (dari Maluku)</li>
-                                            <li>🌸 Cengkeh (dari Maluku)</li>
-                                            <li>🌶️ Lada (dari Sumatera)</li>
-                                            <li>🧈 Kayu Manis</li>
-                                        </ul>
-                                        <p style="margin-left: 15px; margin-top: 10px; background: white; padding: 10px; border-radius: 8px;">
-                                            <strong>💰 Fungsi Rempah-rempah di Eropa:</strong><br>
-                                            • Pengawet makanan (belum ada kulkas)<br>
-                                            • Obat-obatan<br>
-                                            • Bumbu masakan<br>
-                                            • Simbol status sosial orang kaya
-                                        </p>
-                                    </div>
-                                </div>
-                                
-                                <div class="fun-fact">
-                                    <strong>💡 Fakta Mencengangkan:</strong> Harga 1 kg pala di Eropa abad ke-15 setara dengan harga 7 ekor sapi! Makanya Eropa rela berlayar berbulan-bulan ke Indonesia! 🌰💰
-                                </div>
-                            </div>
-                        `
+                        title: "A. Kedatangan Bangsa Barat",
+                        topics: [
+                            {
+                                subtitle: "1. Latar Belakang (Semangat 3G)",
+                                content: `• Gold (Kekayaan): Mencari rempah-rempah (pala, cengkeh, lada)
+• Glory (Kejayaan): Mencari wilayah jajahan untuk kekuasaan
+• Gospel (Agama): Menyebarkan agama Kristen (Katolik/Protestan)`
+                            },
+                            {
+                                subtitle: "2. Penyebab Lain",
+                                content: `• Jatuhnya Konstantinopel ke Turki Usmani (1453)
+• Terputusnya jalur perdagangan rempah Eropa-Asia
+• Penemuan kompas untuk navigasi laut
+• Semangat Reconquista (menaklukkan wilayah baru)
+• Rempah-rempah Indonesia sangat mahal di Eropa`
+                            },
+                            {
+                                subtitle: "3. Bangsa Eropa yang Datang",
+                                content: `<strong>a) Portugis (1511):</strong>
+   - Pertama datang ke Indonesia
+   - Dipimpin Alfonso d'Albuquerque
+   - Menguasai Maluku (Kepulauan Banda)
+   - Membangun benteng di Maluku
+
+<strong>b) Spanyol (1521):</strong>
+   - Mencari rempah-rempah
+   - Kalah bersaing dengan Portugis
+   - Wilayah terbatas
+
+<strong>c) Belanda (1596):</strong>
+   - Dipimpin Cornelis de Houtman
+   - Mendirikan VOC (1602)
+   - Menjajah Indonesia paling lama (350 tahun)
+
+<strong>d) Inggris (1811-1816):</strong>
+   - Dipimpin Thomas Stamford Raffles
+   - Membuat sistem sewa tanah (Landrent)
+   - Menemukan Bunga Rafflesia Arnoldi`
+                            }
+                        ]
                     },
                     {
-                        title: "Bangsa Eropa yang Datang ke Indonesia",
-                        content: `
-                            <div class="info-box">
-                                <h4 style="font-weight: bold; margin-bottom: 12px; color: #1e40af;">🚢 Urutan Kedatangan Bangsa Barat</h4>
-                                
-                                <div class="detail-section">
-                                    <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #f59e0b;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">1️⃣ PORTUGIS (1511)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Tokoh:</strong> Alfonso d'Albuquerque</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Wilayah yang Dikuasai:</strong> Malaka (Malaysia), Maluku (Ternate & Tidore)</p>
-                                        <p style="margin-left: 15px;"><strong>Tujuan:</strong> Mencari rempah-rempah (pala & cengkeh) dan menyebarkan agama Katolik</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #dbeafe, #bfdbfe); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #3b82f6;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">2️⃣ SPANYOL (1521)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Tokoh:</strong> Ferdinand Magelhaens (meninggal di Filipina), Sebastian del Cano (meneruskan)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Wilayah yang Dikuasai:</strong> Maluku (Tidore)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Perjanjian Saragosa (1534):</strong> Spanyol menyerahkan Maluku ke Portugis dan fokus ke Filipina</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fed7aa, #fdba74); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #ea580c;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">3️⃣ BELANDA (1596) - PALING LAMA!</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Tokoh Pertama:</strong> Cornelis de Houtman (1596)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>VOC (Vereenigde Oost-Indische Compagnie):</strong> Didirikan 20 Maret 1602</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Gubernur Jenderal Pertama:</strong> Pieter Both</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Masa Penjajahan:</strong> 1602 - 1942 (sekitar 350 tahun!)</p>
-                                        <p style="margin-left: 15px;"><strong>Hak Istimewa VOC (Octroi):</strong></p>
-                                        <ul style="margin-left: 35px;">
-                                            <li>Monopoli perdagangan</li>
-                                            <li>Mencetak uang sendiri</li>
-                                            <li>Memiliki tentara</li>
-                                            <li>Membuat perjanjian dengan raja-raja lokal</li>
-                                            <li>Menyatakan perang</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fecaca, #fca5a5); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #dc2626;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">4️⃣ INGGRIS (1579)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Tokoh:</strong> Sir Francis Drake (1579), James Lancaster (1602)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>EIC (East India Company):</strong> Perusahaan dagang Inggris</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Wilayah yang Dikuasai:</strong> Banten, Jayakarta (Jakarta), Bengkulu</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Konvensi London (1824):</strong> Inggris menyerahkan semua wilayah di Indonesia ke Belanda, dan Belanda menyerahkan Malaka & Singapura ke Inggris</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #e9d5ff, #d8b4fe); padding: 15px; border-radius: 10px; border-left: 5px solid #a855f7;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">5️⃣ JEPANG (1942-1945)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Masa Penjajahan:</strong> 3,5 tahun (singkat tapi sangat kejam!)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Tujuan:</strong> Menguasai sumber daya alam (minyak, karet, beras) untuk perang Pasifik</p>
-                                        <p style="margin-left: 15px;"><strong>Kebijakan Kejam:</strong></p>
-                                        <ul style="margin-left: 35px;">
-                                            <li>Romusha (kerja paksa)</li>
-                                            <li>Jugun Ianfu (wanita penghibur paksa)</li>
-                                            <li>Tanam paksa padi & kapas</li>
-                                            <li>Penyerahan hasil bumi secara paksa</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                
-                                <div class="fun-fact">
-                                    <strong>💡 Ingat Urutannya:</strong> <strong>Por-Spa-Bel-Ing-Jep</strong> atau <strong>Portugis → Spanyol → Belanda → Inggris → Jepang</strong> 🚢
-                                </div>
-                            </div>
-                        `
+                        title: "B. VOC",
+                        topics: [
+                            {
+                                subtitle: "Vereenigde Oost-Indische Compagnie",
+                                content: `• Didirikan: 20 Maret 1602
+• Tujuan: Menghindari persaingan antar pedagang Belanda
+
+<strong>Hak Istimewa (Hak Oktori):</strong>
+   - Mencetak uang sendiri
+   - Memiliki tentara sendiri
+   - Mengadakan perjanjian dengan raja-raja
+   - Memonopoli perdagangan
+   - Mengisi dan memberhentikan pegawai
+   - Menyatakan perang dan damai
+
+• Dibubarkan: 31 Desember 1799 (bangkrut)`
+                            }
+                        ]
                     },
                     {
-                        title: "Kebijakan Pemerintah Kolonial Belanda",
-                        content: `
-                            <div class="info-box">
-                                <h4 style="font-weight: bold; margin-bottom: 12px; color: #1e40af;">😢 Kebijakan Penjajahan yang Menyengsarakan Rakyat</h4>
-                                
-                                <div class="detail-section">
-                                    <div style="background: linear-gradient(135deg, #fecaca, #fca5a5); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #dc2626;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">1️⃣ SISTEM TANAM PAKSA (Cultuurstelsel) 1830-1870</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Pencetus:</strong> Gubernur Jenderal Van den Bosch</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Aturan:</strong></p>
-                                        <ul style="margin-left: 35px; margin-bottom: 8px;">
-                                            <li>Rakyat wajib menanam tanaman ekspor (kopi, tebu, nila) di 1/5 tanahnya</li>
-                                            <li>Hasil panen diserahkan ke pemerintah Belanda</li>
-                                            <li>Jika gagal panen, rakyat tetap harus bayar pajak</li>
-                                        </ul>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Dampak Buruk:</strong></p>
-                                        <ul style="margin-left: 35px;">
-                                            <li>😢 Rakyat kelaparan karena sawah untuk padi berkurang</li>
-                                            <li>💀 Terjadi wabah kelaparan dan kematian massal</li>
-                                            <li>💰 Belanda untung besar, rakyat Indonesia menderita</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fed7aa, #fdba74); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #ea580c;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">2️⃣ KERJA RODI (Kerja Paksa Tanpa Upah)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;">Rakyat dipaksa bekerja untuk kepentingan pemerintah Belanda <strong>TANPA DIBAYAR!</strong></p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Contoh Pekerjaan Rodi:</strong></p>
-                                        <ul style="margin-left: 35px;">
-                                            <li>Membuat jalan raya</li>
-                                            <li>Membuat jembatan</li>
-                                            <li>Membuat benteng</li>
-                                            <li>Membangun kantor-kantor pemerintah</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #f59e0b;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">3️⃣ SISTEM SEWA TANAH (Landelijk Stelsel) 1870-1900</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;">Pengusaha Belanda menyewa tanah dari rakyat untuk perkebunan besar (kopi, teh, karet, tembakau)</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Dampak:</strong></p>
-                                        <ul style="margin-left: 35px;">
-                                            <li>Rakyat kehilangan tanah</li>
-                                            <li>Menjadi buruh di tanahnya sendiri dengan upah rendah</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #10b981;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">4️⃣ POLITIK ETIS (Politik Balas Budi) 1901</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Latar Belakang:</strong> Kritik dari C.Th. Van Deventer yang menulis buku <em>"Een Eereschuld"</em> (Hutang Kehormatan) yang mengkritik penderitaan rakyat Indonesia</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Isi Program (TRIAS VAN DEVENTER):</strong></p>
-                                        <ul style="margin-left: 35px; margin-bottom: 8px;">
-                                            <li><strong>Irigasi (Pengairan)</strong> - memperbaiki sistem pengairan sawah</li>
-                                            <li><strong>Edukasi (Pendidikan)</strong> - membangun sekolah untuk pribumi</li>
-                                            <li><strong>Emigrasi (Transmigrasi)</strong> - memindahkan penduduk dari Jawa ke luar Jawa</li>
-                                        </ul>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Dampak Positif:</strong></p>
-                                        <ul style="margin-left: 35px;">
-                                            <li>Muncul kaum terpelajar Indonesia</li>
-                                            <li>Tumbuh kesadaran nasional untuk merdeka</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                
-                                <div class="fun-fact">
-                                    <strong>💡 Fakta Tragis:</strong> Sistem Tanam Paksa membuat Belanda kaya raya, tapi rakyat Indonesia mengalami kelaparan hebat. Kematian akibat kelaparan diperkirakan mencapai jutaan jiwa! 😢
-                                </div>
-                            </div>
-                        `
+                        title: "C. Perlawanan Rakyat",
+                        topics: [
+                            {
+                                subtitle: "1. Perang Diponegoro (1825-1830)",
+                                content: `• Pemimpin: Pangeran Diponegoro
+• Tempat: Jawa Tengah dan Jawa Timur
+
+<strong>Latar Belakang/Sebab:</strong>
+   - Belanda tidak menghormati adat istiadat Jawa
+   - Pemasangan patok jalan melewati makam leluhur
+   - Pajak tinggi membebani rakyat
+   - Campur tangan Belanda dalam urusan keraton
+
+• Strategi: Perang gerilya
+• Akhir: Diponegoro ditangkap dengan tipu muslihat`
+                            },
+                            {
+                                subtitle: "2. Perang Padri (1821-1837)",
+                                content: `• Pemimpin: Tuanku Imam Bonjol, Tuanku Nan Renceh
+• Tempat: Sumatera Barat (Minangkabau)
+
+<strong>Latar Belakang:</strong>
+   - Konflik antara kaum Padri (reformis Islam) vs kaum Adat
+   - Belanda masuk membantu kaum Adat
+   - Kaum Padri menentang Belanda
+
+• Taktik Benteng Stelsel: Belanda membangun benteng-benteng mengelilingi daerah perlawanan
+• Akhir: Tuanku Imam Bonjol ditangkap dan diasingkan ke Manado`
+                            }
+                        ]
                     },
                     {
-                        title: "Perlawanan Rakyat terhadap Penjajah",
-                        content: `
-                            <div class="info-box">
-                                <h4 style="font-weight: bold; margin-bottom: 12px; color: #1e40af;">⚔️ Perlawanan Heroik Rakyat Indonesia</h4>
-                                
-                                <div class="detail-section">
-                                    <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #f59e0b;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">1️⃣ PERANG PADRI (1821-1837) - Sumatera Barat</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Tokoh:</strong> Tuanku Imam Bonjol</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Sebab:</strong> Belanda campur tangan dalam urusan agama dan adat</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Akhir:</strong> Tuanku Imam Bonjol ditangkap dan diasingkan ke Manado, kemudian Minahasa</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fecaca, #fca5a5); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #dc2626;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">2️⃣ PERANG DIPONEGORO (1825-1830) - Jawa Tengah</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Tokoh:</strong> Pangeran Diponegoro</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Sebab:</strong></p>
-                                        <ul style="margin-left: 35px; margin-bottom: 8px;">
-                                            <li>Belanda membuat jalan melewati makam leluhur</li>
-                                            <li>Pajak yang sangat tinggi</li>
-                                            <li>Campur tangan Belanda dalam urusan istana</li>
-                                        </ul>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Strategi:</strong> Perang Gerilya (sembunyi di hutan, serang tiba-tiba)</p>
-                                        <p style="margin-left: 15px;"><strong>Akhir:</strong> Diponegoro ditangkap dengan tipu muslihat saat perundingan dan diasingkan ke Makassar</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #dbeafe, #bfdbfe); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #3b82f6;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">3️⃣ PERANG ACEH (1873-1904) - Aceh</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Tokoh:</strong> Sultan Iskandar Muda, Cut Nyak Dien, Teuku Umar</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Sebab:</strong> Belanda ingin menguasai Aceh yang kaya rempah-rempah</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Perlawanan Terlama:</strong> 31 tahun!</p>
-                                        <p style="margin-left: 15px;"><strong>Pahlawan Wanita:</strong> Cut Nyak Dien terus berjuang meski suaminya (Teuku Umar) gugur</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 5px solid #10b981;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">4️⃣ PERANG BANJAR (1859-1863) - Kalimantan Selatan</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Tokoh:</strong> Pangeran Antasari</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Sebab:</strong> Belanda campur tangan dalam suksesi tahta Kesultanan Banjar</p>
-                                        <p style="margin-left: 15px;"><strong>Akhir:</strong> Pangeran Antasari gugur dalam pertempuran</p>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #e9d5ff, #d8b4fe); padding: 15px; border-radius: 10px; border-left: 5px solid #a855f7;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">5️⃣ PERANG BALI (1846-1849) - Bali</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Tokoh:</strong> I Gusti Ketut Jelantik</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Puputan:</strong> Perang habis-habisan sampai titik darah penghabisan (raja dan rakyat rela mati bersama)</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="fun-fact">
-                                    <strong>💡 Semangat Pantang Menyerah:</strong> Meski kalah secara persenjataan, rakyat Indonesia tidak pernah menyerah! Semangat perlawanan ini akhirnya membawa Indonesia menuju kemerdekaan! 🇮🇩
-                                </div>
-                            </div>
-                        `
+                        title: "D. Sistem Tanam Paksa",
+                        topics: [
+                            {
+                                subtitle: "Cultuurstelsel (1830-1870)",
+                                content: `• Tokoh Pencetus: Gubernur Jenderal Johannes van den Bosch
+
+<strong>Isi Kebijakan:</strong>
+   - 1/5 tanah petani untuk tanaman ekspor
+   - Hasil panen diserahkan ke Belanda
+   - Tanaman wajib: Kopi, tebu, nila, teh, tembakau
+
+<strong>Dampak Negatif:</strong>
+   - Kelaparan dan kemiskinan rakyat
+   - Kerja paksa sangat berat
+   - Banyak rakyat meninggal
+
+<strong>Dampak Positif (untuk Belanda):</strong>
+   - Kas negara Belanda terisi
+   - Belanda terbebas dari hutang`
+                            }
+                        ]
+                    },
+                    {
+                        title: "E. Politik Etis",
+                        topics: [
+                            {
+                                subtitle: "Politik Balas Budi (1901)",
+                                content: `• Tokoh Pencetus: C.Th. Van Deventer (menulis buku "Een Eereschuld")
+
+<strong>Program Trias Van Deventer:</strong>
+   - Irigasi (pengairan untuk pertanian)
+   - Edukasi (pendidikan untuk pribumi)
+   - Emigrasi (transmigrasi/perpindahan penduduk)
+
+• Tujuan: Membalas budi kepada rakyat Indonesia
+• Dampak: Muncul golongan terpelajar Indonesia`
+                            }
+                        ]
+                    },
+                    {
+                        title: "F. Penjajahan Jepang",
+                        topics: [
+                            {
+                                subtitle: "Masa Penjajahan (1942-1945)",
+                                content: `• Durasi: 3,5 tahun (8 Maret 1942 - 17 Agustus 1945)
+• Sangat kejam dan menindas
+• Lebih berat dari Belanda
+
+<strong>Kebijakan Jepang:</strong>
+   - Romusha: Kerja paksa untuk kepentingan perang
+   - Jugun Ianfu: Wanita penghibur tentara Jepang
+   - Tanam paksa padi dan kapas
+   - Larangan bendera Merah Putih
+   - Organisasi: PETA, Heiho, Seinendan, Keibodan
+
+<strong>Janji Kemerdekaan:</strong>
+   - Jepang menjanjikan kemerdekaan kepada Indonesia
+   - Realisasi: Pembentukan BPUPKI (29 Mei 1945)
+   - BPUPKI merumuskan dasar negara dan UUD
+   - Dibentuk PPKI (18 Agustus 1945)`
+                            }
+                        ]
+                    },
+                    {
+                        title: "G. Proklamasi Kemerdekaan",
+                        topics: [
+                            {
+                                subtitle: "Peristiwa Menjelang Proklamasi",
+                                content: `<strong>1. Peristiwa Rengasdengklok (16 Agustus 1945):</strong>
+   - Golongan muda menculik Soekarno-Hatta
+   - Tujuan: Proklamasi segera tanpa pengaruh Jepang
+   - Tempat: Rengasdengklok, Karawang
+
+<strong>2. Perumusan Teks Proklamasi (16-17 Agustus 1945):</strong>
+   - Tempat: Rumah Laksamana Maeda, Jl. Imam Bonjol No. 1, Jakarta
+   - Tokoh: Soekarno, Hatta, Ahmad Soebardjo, Soekarni, BM Diah
+   - Penulis naskah: Soekarno
+   - Pengetik naskah: Sayuti Melik
+
+<strong>3. Proklamasi Kemerdekaan (17 Agustus 1945):</strong>
+   - Tempat: Jl. Pegangsaan Timur 56, Jakarta
+   - Pembaca teks: Ir. Soekarno
+   - Didampingi: Drs. Mohammad Hatta
+   - Pengibaran bendera: Latief Hendraningrat, Suhud
+   - Penjahit bendera: Ibu Fatmawati`
+                            }
+                        ]
+                    },
+                    {
+                        title: "H. Mempertahankan Kemerdekaan",
+                        topics: [
+                            {
+                                subtitle: "Agresi Militer Belanda",
+                                content: `<strong>1. Agresi Militer Belanda I (21 Juli 1947):</strong>
+   - Tempat: Jawa Barat, Jawa Tengah, Jawa Timur, Sumatera
+   - Belanda melanggar Perjanjian Linggarjati
+
+<strong>2. Agresi Militer Belanda II (19 Desember 1948):</strong>
+   - Tempat: Yogyakarta (Ibukota RI saat itu)
+   - Belanda menyerang dan menduduki Yogyakarta
+   - Soekarno-Hatta ditangkap dan diasingkan ke Bangka
+   - Serangan Umum 1 Maret 1949: Bukti RI masih ada
+
+<strong>3. Upaya Mempertahankan Kemerdekaan:</strong>
+   - Diplomasi (perundingan): Linggarjati, Renville, Roem-Royen, KMB
+   - Perjuangan Fisik: Pertempuran di berbagai daerah
+   - Gerilya: Serangan terhadap Belanda
+   - Dukungan Internasional: PBB mengakui kedaulatan RI`
+                            }
+                        ]
                     }
                 ]
             },
             geografi: {
-                title: "IPS - Geografi Benua",
+                title: "IPS - Geografi & Globalisasi",
                 icon: "🌍",
-                topics: [
+                color: "#10B981",
+                chapters: [
                     {
-                        title: "Benua Asia",
-                        content: `
-                            <div class="info-box">
-                                <h4 style="font-weight: bold; margin-bottom: 12px; color: #1e40af;">🌏 Benua Asia - Benua Terbesar di Dunia</h4>
-                                
-                                <div class="detail-section">
-                                    <div style="background: linear-gradient(135deg, #dbeafe, #bfdbfe); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">📊 DATA UMUM</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li><strong>Luas:</strong> ±44,6 juta km²</li>
-                                            <li><strong>Penduduk:</strong> ±4,6 miliar jiwa (60% penduduk dunia!)</li>
-                                            <li><strong>Julukan:</strong> Benua Kuning (karena mayoritas penduduknya berkulit kuning)</li>
-                                            <li><strong>Benua:</strong> Terbesar & terpadat di dunia</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">🗺️ BATAS WILAYAH</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li><strong>Utara:</strong> Samudra Arktik</li>
-                                            <li><strong>Selatan:</strong> Samudra Hindia</li>
-                                            <li><strong>Barat:</strong> Laut Merah, Laut Tengah, Pegunungan Ural</li>
-                                            <li><strong>Timur:</strong> Samudra Pasifik</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">🏔️ WILAYAH TERTINGGI & TERENDAH</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li><strong>Gunung Tertinggi:</strong> Gunung Everest (8.848 m) di Nepal/Tibet</li>
-                                            <li><strong>Dataran Terendah:</strong> Laut Mati (-430 m di bawah permukaan laut)</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fecaca, #fca5a5); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">🏙️ NEGARA TERPADAT</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li>🇨🇳 <strong>China</strong> - ±1,4 miliar jiwa</li>
-                                            <li>🇮🇳 <strong>India</strong> - ±1,4 miliar jiwa</li>
-                                            <li>🇮🇩 <strong>Indonesia</strong> - ±270 juta jiwa</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #e9d5ff, #d8b4fe); padding: 15px; border-radius: 10px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">🌾 CIRI KHAS</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li>🏭 Pusat industri teknologi (Jepang, Korea Selatan, China)</li>
-                                            <li>🌾 Penghasil beras terbesar dunia</li>
-                                            <li>🛕 Tempat lahirnya agama-agama besar: Islam, Kristen, Hindu, Buddha, Konghucu</li>
-                                            <li>🏛️ Memiliki peradaban kuno tertua (Mesopotamia, India, China)</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                
-                                <div class="fun-fact">
-                                    <strong>💡 Tahukah Kamu?</strong> Asia adalah satu-satunya benua yang berbatasan dengan 2 benua lainnya: Eropa (di barat) dan Afrika (di barat daya)!
-                                </div>
-                            </div>
-                        `
+                        title: "A. Benua-Benua di Dunia",
+                        topics: [
+                            {
+                                subtitle: "1. Benua Asia (Terbesar)",
+                                content: `• Luas: 44,6 juta km² (benua terbesar di dunia)
+• Penduduk: 4,6 miliar jiwa (terbanyak)
+• Julukan: Benua Kuning (mayoritas ras Mongoloid)
+
+<strong>Pembagian Kawasan:</strong>
+<strong>a) Asia Barat (Timur Tengah):</strong>
+   - Negara: Arab Saudi, Irak, Iran, Yordania, Suriah, Turki, Israel
+   - Kaya minyak bumi
+   - Terusan Suez di Mesir (menghubungkan Laut Tengah dan Laut Merah)
+   - Keuntungan Terusan Suez: Mempersingkat jalur pelayaran Eropa-Asia
+
+<strong>b) Asia Tenggara:</strong>
+   - 10 negara ASEAN: Indonesia, Malaysia, Thailand, Singapura, Vietnam, Filipina, Myanmar, Laos, Kamboja, Brunei
+
+<strong>c) Asia Timur:</strong>
+   - Negara: China, Jepang, Korea Selatan, Korea Utara
+   - Jepang memiliki teknologi paling maju di Asia
+
+<strong>Kenampakan Alam:</strong>
+   - Gunung tertinggi: Gunung Everest (8.848 m) di Nepal/Tibet
+   - Sungai: Yangtze, Gangga, Mekong
+   - Danau: Laut Kaspia (terbesar di dunia)`
+                            },
+                            {
+                                subtitle: "2. Benua Afrika",
+                                content: `• Luas: 30,3 juta km² (terbesar kedua)
+• Julukan: Benua Hitam (mayoritas berkulit hitam/ras Negroid)
+• Daratan bergandengan dengan Asia Barat (Semenanjung Sinai)
+
+<strong>Batas-Batas Wilayah:</strong>
+   - Utara: Laut Tengah (Mediterania)
+   - Selatan: Samudra Hindia dan Atlantik
+   - Barat: Samudra Atlantik
+   - Timur: Laut Merah dan Samudra Hindia
+
+<strong>Kenampakan Alam:</strong>
+   - Sungai terpanjang di dunia: Sungai Nil (6.650 km)
+   - Gunung: Kilimanjaro (5.895 m) - tertinggi di Afrika
+   - Gurun terluas: Gurun Sahara (Afrika Utara)`
+                            },
+                            {
+                                subtitle: "3. Benua Eropa",
+                                content: `• Luas: 10,18 juta km² (terkecil kedua)
+• Julukan: Benua Biru (mayoritas bermata biru/ras Kaukasoid)
+• Benua paling maju (industri, teknologi, ekonomi)
+• Daratan bergandengan dengan Asia (Eurasia)
+
+<strong>Negara Festival Bunga Tulip: Belanda (Keukenhof)</strong>
+
+<strong>Bangunan Terkenal:</strong>
+   - Menara Eiffel (Prancis)
+   - Menara Pisa (Italia)
+   - Big Ben (Inggris)
+   - Colosseum (Italia)`
+                            },
+                            {
+                                subtitle: "4. Benua Amerika",
+                                content: `• Luas: 42,5 juta km² (terbesar kedua)
+• Terdiri dari: Amerika Utara, Amerika Tengah, Amerika Selatan
+• Julukan: Benua Merah (penduduk asli Indian berkulit merah)
+
+<strong>Amerika Selatan:</strong>
+   - Hutan Amazon (hutan hujan tropis terluas di dunia)
+   - Sungai Amazon (terpanjang kedua: 6.400 km)
+   - Gunung Andes (rangkaian gunung terpanjang)
+
+<strong>Bangunan Terkenal:</strong>
+   - Patung Liberty (AS)
+   - Patung Kristus Penebus (Brasil)`
+                            },
+                            {
+                                subtitle: "5. Benua Australia",
+                                content: `• Luas: 8,6 juta km² (benua terkecil)
+• Julukan: Benua Hijau (banyak padang rumput)
+
+<strong>Ibukota Negara-Negara:</strong>
+   - Australia: Canberra
+   - Selandia Baru: Wellington
+   - Papua Nugini: Port Moresby
+
+<strong>Hewan Khas (Endemik):</strong>
+   - Kanguru (simbol Australia)
+   - Koala
+   - Platipus
+   - Burung Kasuari`
+                            },
+                            {
+                                subtitle: "6. Benua Antartika",
+                                content: `• Luas: 14 juta km²
+• Benua terdingin di dunia (suhu -89°C)
+• Tidak ada penduduk tetap (hanya peneliti)
+• Tertutup es sepanjang tahun (98%)
+
+<strong>Karakteristik Kutub:</strong>
+
+<strong>KUTUB UTARA (ARKTIK):</strong>
+   - Berupa lautan beku (Samudra Arktik)
+   - Ada penduduk (Eskimo/Inuit)
+   - Hewan: Beruang kutub, anjing laut, paus
+
+<strong>KUTUB SELATAN (ANTARTIKA):</strong>
+   - Berupa benua tertutup es
+   - Tidak ada penduduk tetap
+   - Hewan: Pinguin, anjing laut
+   - Suhu paling dingin di Bumi`
+                            }
+                        ]
                     },
                     {
-                        title: "Benua Amerika",
-                        content: `
-                            <div class="info-box">
-                                <h4 style="font-weight: bold; margin-bottom: 12px; color: #1e40af;">🗽 Benua Amerika - Benua Baru (The New World)</h4>
-                                
-                                <div class="detail-section">
-                                    <div style="background: linear-gradient(135deg, #dbeafe, #bfdbfe); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">📊 DATA UMUM</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li><strong>Luas:</strong> ±42,5 juta km²</li>
-                                            <li><strong>Penduduk:</strong> ±1 miliar jiwa</li>
-                                            <li><strong>Julukan:</strong> Benua Merah (dari kulit penduduk asli Indian yang kemerahan)</li>
-                                            <li><strong>Penemu:</strong> Christopher Columbus (1492)</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">🗺️ PEMBAGIAN WILAYAH</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>1. AMERIKA UTARA</strong></p>
-                                        <ul style="margin-left: 35px; margin-bottom: 10px;">
-                                            <li>🇺🇸 Amerika Serikat (negara adidaya)</li>
-                                            <li>🇨🇦 Kanada</li>
-                                            <li>🇲🇽 Meksiko</li>
-                                        </ul>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>2. AMERIKA TENGAH</strong></p>
-                                        <ul style="margin-left: 35px; margin-bottom: 10px;">
-                                            <li>Guatemala, Honduras, Nikaragua, Panama, dll</li>
-                                        </ul>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>3. AMERIKA SELATAN</strong></p>
-                                        <ul style="margin-left: 35px;">
-                                            <li>🇧🇷 Brasil (terbesar)</li>
-                                            <li>🇦🇷 Argentina</li>
-                                            <li>🇨🇱 Chili</li>
-                                            <li>🇵🇪 Peru, dll</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">🏔️ KENAMPAKAN ALAM</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li><strong>Pegunungan Rocky:</strong> Pegunungan di Amerika Utara</li>
-                                            <li><strong>Pegunungan Andes:</strong> Pegunungan terpanjang di dunia (7.000 km)</li>
-                                            <li><strong>Sungai Amazon:</strong> Sungai terbesar di dunia (volume air)</li>
-                                            <li><strong>Hutan Amazon:</strong> Hutan hujan tropis terluas (paru-paru dunia)</li>
-                                            <li><strong>Grand Canyon:</strong> Ngarai terbesar di dunia</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fecaca, #fca5a5); padding: 15px; border-radius: 10px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">🌾 CIRI KHAS</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li>🗽 <strong>Amerika Serikat</strong> - negara adidaya ekonomi & militer</li>
-                                            <li>⚽ <strong>Brasil</strong> - negara sepak bola terbaik dunia</li>
-                                            <li>🌳 <strong>Hutan Amazon</strong> - penghasil oksigen terbesar</li>
-                                            <li>🌽 Penghasil jagung, gandum, dan kedelai terbesar</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                
-                                <div class="fun-fact">
-                                    <strong>💡 Fakta Unik:</strong> Benua Amerika dinamai dari nama penjelajah Italia <strong>Amerigo Vespucci</strong> yang pertama kali menyadari bahwa daratan yang ditemukan Columbus adalah benua baru, bukan Asia!
-                                </div>
-                            </div>
-                        `
+                        title: "B. Globalisasi",
+                        topics: [
+                            {
+                                subtitle: "1. Pengertian Globalisasi",
+                                content: `• Proses mendunia atau penyebaran sesuatu ke seluruh dunia
+• Batas-batas negara seolah hilang (dunia tanpa batas)
+• Informasi dan teknologi menyebar cepat ke seluruh dunia
+• Saling ketergantungan antar negara meningkat`
+                            },
+                            {
+                                subtitle: "2. Sikap Menghadapi Globalisasi",
+                                content: `<strong>Sikap Positif (Yang Harus Dilakukan):</strong>
+   ✓ Menyaring budaya asing yang masuk
+   ✓ Mempertahankan budaya dan nilai luhur bangsa
+   ✓ Memanfaatkan teknologi untuk pendidikan
+   ✓ Meningkatkan kualitas diri
+   ✓ Belajar bahasa asing
+   ✓ Berprestasi di berbagai bidang
+   ✓ Mencintai produk dalam negeri
+
+<strong>Sikap yang Harus Dihindari:</strong>
+   ✗ Meniru budaya asing secara membabi buta
+   ✗ Melupakan budaya sendiri
+   ✗ Bergaya hidup konsumtif (boros)
+   ✗ Menggunakan teknologi untuk hal negatif`
+                            },
+                            {
+                                subtitle: "3. Pengaruh Globalisasi",
+                                content: `<strong>Bidang Sosial Budaya:</strong>
+Positif:
+   • Kemudahan berkomunikasi dengan orang di seluruh dunia
+   • Akses informasi dan pengetahuan lebih luas
+   • Pertukaran budaya antar bangsa
+   • Memperkaya khazanah budaya
+
+Negatif:
+   • Lunturnya budaya lokal
+   • Gaya hidup konsumtif (kebarat-baratan)
+   • Sikap individualis meningkat
+   • Masuknya budaya negatif
+
+<strong>Bidang Pendidikan:</strong>
+Dampak Positif:
+   • Akses informasi dan pembelajaran lebih mudah
+   • Pembelajaran online (e-learning)
+   • Pertukaran pelajar antar negara
+   • Teknologi pendidikan canggih (komputer, internet)
+   • Belajar bahasa asing lebih mudah
+   • Perpustakaan digital`
+                            }
+                        ]
                     },
                     {
-                        title: "Benua Eropa",
-                        content: `
-                            <div class="info-box">
-                                <h4 style="font-weight: bold; margin-bottom: 12px; color: #1e40af;">🏰 Benua Eropa - Benua Biru</h4>
-                                
-                                <div class="detail-section">
-                                    <div style="background: linear-gradient(135deg, #dbeafe, #bfdbfe); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">📊 DATA UMUM</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li><strong>Luas:</strong> ±10,18 juta km²</li>
-                                            <li><strong>Penduduk:</strong> ±750 juta jiwa</li>
-                                            <li><strong>Julukan:</strong> Benua Biru (mayoritas penduduk bermata biru)</li>
-                                            <li><strong>Ciri:</strong> Negara-negara maju & pusat peradaban dunia</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">🗺️ BATAS WILAYAH</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li><strong>Utara:</strong> Samudra Arktik</li>
-                                            <li><strong>Selatan:</strong> Laut Tengah & Laut Hitam</li>
-                                            <li><strong>Barat:</strong> Samudra Atlantik</li>
-                                            <li><strong>Timur:</strong> Pegunungan Ural (berbatasan dengan Asia)</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">🏛️ NEGARA-NEGARA PENTING</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li>🇬🇧 <strong>Inggris</strong> - pusat Revolusi Industri</li>
-                                            <li>🇫🇷 <strong>Prancis</strong> - pusat mode & kuliner dunia</li>
-                                            <li>🇩🇪 <strong>Jerman</strong> - ekonomi terkuat di Eropa</li>
-                                            <li>🇮🇹 <strong>Italia</strong> - pusat seni & sejarah (Roma, Vatikan)</li>
-                                            <li>🇷🇺 <strong>Rusia</strong> - negara terluas di dunia (melintasi Eropa & Asia)</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fecaca, #fca5a5); padding: 15px; border-radius: 10px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">🌾 CIRI KHAS</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li>🏛️ Peradaban kuno: Yunani & Romawi</li>
-                                            <li>🏭 Tempat lahirnya Revolusi Industri</li>
-                                            <li>🎨 Pusat seni, musik, dan sastra dunia</li>
-                                            <li>⚽ Sepak bola adalah olahraga paling populer</li>
-                                            <li>💶 Banyak negara menggunakan mata uang Euro</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                
-                                <div class="fun-fact">
-                                    <strong>💡 Fakta Menarik:</strong> Benua Eropa adalah benua terkecil kedua setelah Australia, tapi memiliki 50 negara! Eropa juga merupakan tempat asal bangsa-bangsa yang menjajah Indonesia (Portugis, Spanyol, Belanda, Inggris).
-                                </div>
-                            </div>
-                        `
+                        title: "C. Kerjasama Internasional",
+                        topics: [
+                            {
+                                subtitle: "1. PBB (Perserikatan Bangsa-Bangsa)",
+                                content: `• Didirikan: 24 Oktober 1945
+• Markas: New York, Amerika Serikat
+• Anggota: 193 negara
+• Tujuan: Menjaga perdamaian dan keamanan dunia
+
+<strong>Badan-Badan PBB:</strong>
+   • UNESCO: Pendidikan, ilmu pengetahuan, budaya
+   • UNICEF: Kesejahteraan anak
+   • WHO: Kesehatan dunia
+   • FAO: Pangan dan Pertanian (mengatasi kelaparan dunia)
+   • ILO: Ketenagakerjaan
+   • UNHCR: Pengungsi
+
+<strong>Peran Indonesia dalam PBB:</strong>
+   • Mengirim pasukan Garuda (penjaga perdamaian)
+   • Aktif dalam misi perdamaian dunia
+   • Menjadi anggota tidak tetap Dewan Keamanan PBB
+   • Berkontribusi dalam program kemanusiaan`
+                            },
+                            {
+                                subtitle: "2. ASEAN",
+                                content: `• Didirikan: 8 Agustus 1967 (Bangkok, Thailand)
+• Pendiri: Indonesia, Malaysia, Singapura, Thailand, Filipina
+• Anggota sekarang: 10 negara
+• Markas: Jakarta, Indonesia
+
+<strong>Tujuan ASEAN:</strong>
+   • Mempercepat pertumbuhan ekonomi
+   • Meningkatkan perdamaian dan stabilitas
+   • Kerjasama di berbagai bidang
+   • Saling membantu antar negara anggota
+
+<strong>Bentuk Kerjasama ASEAN:</strong>
+   • Politik dan Keamanan: Menyelesaikan konflik secara damai
+   • Ekonomi: Perdagangan bebas ASEAN (AFTA)
+   • Sosial Budaya: Pertukaran pelajar, festival budaya
+   • Pendidikan: Beasiswa ASEAN, pertukaran guru
+   • Olahraga: SEA Games
+
+<strong>Peran Indonesia dalam ASEAN:</strong>
+   • Negara pendiri dan terbesar
+   • Jakarta sebagai markas sekretariat ASEAN
+   • Penengah konflik antar negara anggota
+   • Penggerak kerjasama ekonomi`
+                            }
+                        ]
                     },
                     {
-                        title: "Benua Afrika",
-                        content: `
-                            <div class="info-box">
-                                <h4 style="font-weight: bold; margin-bottom: 12px; color: #1e40af;">🦁 Benua Afrika - Benua Hitam</h4>
-                                
-                                <div class="detail-section">
-                                    <div style="background: linear-gradient(135deg, #dbeafe, #bfdbfe); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">📊 DATA UMUM</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li><strong>Luas:</strong> ±30,37 juta km²</li>
-                                            <li><strong>Penduduk:</strong> ±1,3 miliar jiwa</li>
-                                            <li><strong>Julukan:</strong> Benua Hitam (mayoritas penduduk berkulit hitam)</li>
-                                            <li><strong>Ciri:</strong> Benua terpanas & kaya sumber daya alam</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">🗺️ BATAS WILAYAH</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li><strong>Utara:</strong> Laut Tengah</li>
-                                            <li><strong>Selatan:</strong> Samudra Hindia & Atlantik</li>
-                                            <li><strong>Barat:</strong> Samudra Atlantik</li>
-                                            <li><strong>Timur:</strong> Samudra Hindia & Laut Merah</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">🏔️ KENAMPAKAN ALAM</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li><strong>Gunung Kilimanjaro:</strong> Gunung tertinggi (5.895 m) di Tanzania</li>
-                                            <li><strong>Sungai Nil:</strong> Sungai terpanjang di dunia (6.650 km)</li>
-                                            <li><strong>Gurun Sahara:</strong> Gurun terluas di dunia</li>
-                                            <li><strong>Danau Victoria:</strong> Danau terbesar di Afrika</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fecaca, #fca5a5); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">🦁 SATWA KHAS</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li>🦁 Singa (Raja Hutan)</li>
-                                            <li>🦒 Jerapah</li>
-                                            <li>🐘 Gajah Afrika</li>
-                                            <li>🦓 Zebra</li>
-                                            <li>🦏 Badak</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #e9d5ff, #d8b4fe); padding: 15px; border-radius: 10px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">💎 KEKAYAAN ALAM</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li>💎 Berlian & emas (Afrika Selatan)</li>
-                                            <li>🛢️ Minyak bumi (Nigeria, Libya)</li>
-                                            <li>☕ Kopi & kakao</li>
-                                            <li>🏺 Peradaban kuno: Mesir (Piramida, Sphinx)</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                
-                                <div class="fun-fact">
-                                    <strong>💡 Fakta Unik:</strong> Afrika adalah benua tempat ditemukannya fosil manusia tertua di dunia! Makanya Afrika dijuluki <strong>"Benua Asal Manusia"</strong> atau <strong>"Cradle of Humankind"</strong> 🦴
-                                </div>
-                            </div>
-                        `
-                    },
-                    {
-                        title: "Benua Australia",
-                        content: `
-                            <div class="info-box">
-                                <h4 style="font-weight: bold; margin-bottom: 12px; color: #1e40af;">🦘 Benua Australia - Benua Terkecil</h4>
-                                
-                                <div class="detail-section">
-                                    <div style="background: linear-gradient(135deg, #dbeafe, #bfdbfe); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">📊 DATA UMUM</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li><strong>Luas:</strong> ±8,6 juta km²</li>
-                                            <li><strong>Penduduk:</strong> ±42 juta jiwa (termasuk negara-negara Oseania)</li>
-                                            <li><strong>Julukan:</strong> Benua Terkecil / Negara Benua</li>
-                                            <li><strong>Ciri:</strong> Satu-satunya benua yang hanya memiliki 1 negara besar</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">🗺️ WILAYAH</p>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Negara Utama:</strong></p>
-                                        <ul style="margin-left: 35px; margin-bottom: 10px;">
-                                            <li>🇦🇺 <strong>Australia</strong> - negara terbesar</li>
-                                            <li>🇳🇿 <strong>Selandia Baru</strong></li>
-                                            <li>🇵🇬 <strong>Papua Nugini</strong></li>
-                                        </ul>
-                                        <p style="margin-left: 15px; margin-bottom: 8px;"><strong>Pulau-Pulau Kecil (Oseania):</strong></p>
-                                        <ul style="margin-left: 35px;">
-                                            <li>Fiji, Samoa, Tonga, Vanuatu, dll</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">🦘 HEWAN KHAS (Fauna Endemik)</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li>🦘 <strong>Kanguru</strong> - hewan simbol Australia</li>
-                                            <li>🐨 <strong>Koala</strong> - hanya makan daun eucalyptus</li>
-                                            <li>🦆 <strong>Platypus</strong> - mamalia bertelur</li>
-                                            <li>🦅 <strong>Emu</strong> - burung terbesar kedua di dunia</li>
-                                            <li>🕷️ <strong>Tarantula & Ular Berbisa</strong></li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fecaca, #fca5a5); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">🏝️ KENAMPAKAN ALAM</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li><strong>Great Barrier Reef:</strong> Terumbu karang terbesar di dunia</li>
-                                            <li><strong>Gurun Pasir:</strong> 70% wilayah Australia adalah gurun</li>
-                                            <li><strong>Uluru (Ayers Rock):</strong> Batu raksasa keramat suku Aborigin</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #e9d5ff, #d8b4fe); padding: 15px; border-radius: 10px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">🌾 CIRI KHAS</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li>🐑 Penghasil wol domba terbesar dunia</li>
-                                            <li>⛏️ Kaya akan tambang (emas, batu bara, bijih besi)</li>
-                                            <li>🏙️ Kota terkenal: Sydney, Melbourne, Brisbane</li>
-                                            <li>🏛️ Penduduk asli: Suku Aborigin & Maori (Selandia Baru)</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                
-                                <div class="fun-fact">
-                                    <strong>💡 Fakta Unik:</strong> Australia adalah satu-satunya benua yang juga merupakan sebuah negara! Benua ini memiliki hewan-hewan yang TIDAK ADA di benua lain karena terisolasi jutaan tahun. 🦘🐨
-                                </div>
-                            </div>
-                        `
-                    },
-                    {
-                        title: "Benua Antartika",
-                        content: `
-                            <div class="info-box">
-                                <h4 style="font-weight: bold; margin-bottom: 12px; color: #1e40af;">🧊 Benua Antartika - Benua Es</h4>
-                                
-                                <div class="detail-section">
-                                    <div style="background: linear-gradient(135deg, #dbeafe, #bfdbfe); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">📊 DATA UMUM</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li><strong>Luas:</strong> ±14,2 juta km²</li>
-                                            <li><strong>Penduduk:</strong> TIDAK ADA penduduk tetap! Hanya peneliti sementara (1.000-5.000 orang)</li>
-                                            <li><strong>Julukan:</strong> Benua Es / Benua Putih</li>
-                                            <li><strong>Ciri:</strong> Benua terdingin, terkering, & paling berangin</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">❄️ KONDISI IKLIM EKSTREM</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li>🌡️ <strong>Suhu:</strong> -60°C hingga -90°C (rekor terdingin -89,2°C)</li>
-                                            <li>🧊 <strong>Es:</strong> 98% wilayah tertutup es setebal 2 km!</li>
-                                            <li>💨 <strong>Angin:</strong> Kecepatan hingga 320 km/jam</li>
-                                            <li>🌞 <strong>Matahari:</strong> 6 bulan siang & 6 bulan malam</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">🐧 FAUNA (Hewan Khas)</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li>🐧 <strong>Penguin</strong> - hewan simbol Antartika</li>
-                                            <li>🦭 <strong>Anjing Laut (Seal)</strong></li>
-                                            <li>🐋 <strong>Paus Biru</strong></li>
-                                            <li>🦐 <strong>Krill</strong> - makanan utama hewan laut</li>
-                                            <li>🐦 <strong>Burung Albatros</strong></li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #fecaca, #fca5a5); padding: 15px; border-radius: 10px; margin-bottom: 12px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">🔬 STASIUN PENELITIAN</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li>Lebih dari 70 stasiun penelitian dari berbagai negara</li>
-                                            <li>Penelitian: iklim, geologi, biologi, astronomi</li>
-                                            <li>TIDAK ADA negara yang memiliki/menguasai Antartika</li>
-                                            <li><strong>Perjanjian Antartika (1959):</strong> Antartika hanya untuk penelitian damai</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <div style="background: linear-gradient(135deg, #e9d5ff, #d8b4fe); padding: 15px; border-radius: 10px;">
-                                        <p style="font-weight: bold; margin-bottom: 8px;">💎 FAKTA PENTING</p>
-                                        <ul style="margin-left: 20px;">
-                                            <li>🧊 Menyimpan <strong>70% air tawar dunia</strong> dalam bentuk es</li>
-                                            <li>🌊 Jika semua es mencair, permukaan laut naik 60 meter!</li>
-                                            <li>🏔️ Gunung tertinggi: <strong>Vinson Massif</strong> (4.892 m)</li>
-                                            <li>🌡️ Tempat terdingin di Bumi</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                
-                                <div class="fun-fact">
-                                    <strong>💡 Fakta Mencengangkan:</strong> Antartika lebih KERING dari Gurun Sahara! Meskipun penuh es, curah hujan/salju sangat sedikit (hanya 50 mm/tahun). Antartika adalah <strong>gurun terbesar di dunia!</strong> ❄️🏜️
-                                </div>
-                            </div>
-                        `
+                        title: "D. Warisan Budaya Indonesia",
+                        topics: [
+                            {
+                                subtitle: "Warisan Budaya Tak Benda UNESCO",
+                                content: `• Wayang (2003) - seni pertunjukan boneka kulit
+• Keris (2005) - senjata tradisional bertuah
+• Batik (2009) - kain bermotif khas Indonesia
+• Angklung (2010) - alat musik bambu dari Sunda
+• Tari Saman (2011) - tarian dari Aceh
+• Noken (2012) - tas tradisional Papua
+• Gamelan (2021) - ansambel musik tradisional
+• Pantun (2020) - sastra lisan Melayu
+• Pencak Silat (2019) - seni bela diri
+
+<strong>Pentingnya Melestarikan Budaya:</strong>
+   • Identitas bangsa
+   • Warisan nenek moyang
+   • Kebanggaan nasional
+   • Daya tarik wisata
+   • Pembelajaran generasi muda`
+                            }
+                        ]
                     }
                 ]
             }
         };
 
-        let currentTab = 'ipa';
-        let expandedTopics = {};
+        let currentSubject = null;
+        let currentChapterIndex = 0;
+
+        async function onConfigChange(config) {
+            renderApp();
+        }
 
         function renderApp() {
             const app = document.getElementById('app');
-            const fontSize = config.font_size;
+            const config = window.elementSdk?.config || defaultConfig;
+            const fontSize = config.font_size || defaultConfig.font_size;
             
-            app.style.fontFamily = config.font_family + ', Arial, sans-serif';
-            app.style.backgroundColor = config.background_color;
-            app.style.color = config.text_color;
+            app.style.fontFamily = (config.font_family || defaultConfig.font_family) + ', Arial, sans-serif';
+            app.style.backgroundColor = config.background_color || defaultConfig.background_color;
+            app.style.color = config.text_color || defaultConfig.text_color;
             
-            app.innerHTML = `
-                <div class="w-full h-full" style="background-color: ${config.background_color}; overflow-y: auto;">
+            if (!currentSubject) {
+                app.innerHTML = renderHome(config, fontSize);
+                attachHomeListeners();
+            } else {
+                app.innerHTML = renderContent(config, fontSize);
+                attachContentListeners();
+            }
+        }
+
+        function renderHome(config, fontSize) {
+            return `
+                <div class="w-full h-full" style="background-color: ${config.background_color || defaultConfig.background_color}; overflow-y: auto;">
                     <!-- Header -->
-                    <div class="w-full" style="background: linear-gradient(135deg, ${config.primary_color}, ${config.accent_color}); padding: ${fontSize * 2}px ${fontSize * 1.5}px;">
-                        <div class="text-center">
-                            <h1 class="font-bold mb-2" style="font-size: ${fontSize * 2}px; color: white;">${config.main_title}</h1>
-                            <p style="font-size: ${fontSize * 1}px; color: white; opacity: 0.95;">${config.subtitle}</p>
+                    <div class="w-full" style="background: linear-gradient(135deg, ${config.primary_color || defaultConfig.primary_color}, ${config.accent_color || defaultConfig.accent_color}); padding: ${fontSize * 3}px ${fontSize * 1.5}px;">
+                        <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
+                            <h1 style="font-size: ${fontSize * 2.5}px; font-weight: bold; color: white; margin-bottom: ${fontSize * 0.8}px;">📚 ${config.app_title || defaultConfig.app_title}</h1>
+                            <p style="font-size: ${fontSize * 1.2}px; color: white; opacity: 0.95;">${config.welcome_text || defaultConfig.welcome_text}</p>
                         </div>
                     </div>
 
-                    <!-- Tab Navigation -->
-                    <div class="w-full" style="background-color: white; border-bottom: 2px solid ${config.secondary_color}; padding: ${fontSize * 0.5}px ${fontSize * 1}px;">
-                        <div style="display: flex; gap: ${fontSize * 0.5}px; overflow-x: auto; flex-wrap: wrap;">
-                            ${renderTabButtons(fontSize)}
+                    <!-- Subject Cards -->
+                    <div class="w-full" style="padding: ${fontSize * 2.5}px ${fontSize * 1.5}px;">
+                        <div style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: ${fontSize * 1.5}px;">
+                            ${renderSubjectCards(config, fontSize)}
                         </div>
-                    </div>
-
-                    <!-- Content Area -->
-                    <div class="w-full" style="padding: ${fontSize * 1.5}px;">
-                        <div id="content-area" class="content-section">
-                            ${renderContent(currentTab, fontSize)}
-                        </div>
-                    </div>
-
-                    <!-- Footer -->
-                    <div class="w-full text-center" style="padding: ${fontSize * 1.5}px; background-color: ${config.secondary_color}; margin-top: ${fontSize * 2}px;">
-                        <p style="font-size: ${fontSize * 0.85}px; color: ${config.text_color}; opacity: 0.7;">© 2024 Media Pembelajaran Interaktif | Semangat Belajar! 📚</p>
                     </div>
                 </div>
             `;
-
-            attachEventListeners();
         }
 
-        function renderTabButtons(fontSize) {
-            const tabs = [
-                { key: 'ipa', icon: '🦴', label: 'IPA' },
-                { key: 'sejarah', icon: '📜', label: 'IPS Sejarah' },
-                { key: 'geografi', icon: '🌍', label: 'IPS Geografi' }
-            ];
+        function renderSubjectCards(config, fontSize) {
+            return Object.keys(materiData).map(key => {
+                const subject = materiData[key];
+                return `
+                    <button class="topic-item" data-subject="${key}" style="background: ${config.surface_color || defaultConfig.surface_color}; border: 3px solid ${subject.color}; border-radius: 16px; padding: ${fontSize * 2}px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1); cursor: pointer;">
+                        <div style="font-size: ${fontSize * 4.5}px; margin-bottom: ${fontSize * 1}px;">${subject.icon}</div>
+                        <h3 style="font-size: ${fontSize * 1.4}px; font-weight: bold; color: ${config.text_color || defaultConfig.text_color}; margin-bottom: ${fontSize * 0.8}px;">${subject.title}</h3>
+                        <p style="font-size: ${fontSize * 1}px; color: ${config.text_color || defaultConfig.text_color}; opacity: 0.7; margin-bottom: ${fontSize * 1.2}px;">${subject.chapters.length} Bab Materi</p>
+                        <div style="background: ${subject.color}; color: white; padding: ${fontSize * 0.8}px ${fontSize * 1.5}px; border-radius: 8px; font-weight: 600; font-size: ${fontSize * 1}px; display: inline-block;">Mulai Belajar 🚀</div>
+                    </button>
+                `;
+            }).join('');
+        }
 
-            return tabs.map(tab => `
-                <button class="tab-button ${currentTab === tab.key ? 'active' : ''}" data-tab="${tab.key}" 
-                    style="padding: ${fontSize * 1}px ${fontSize * 1.5}px; font-size: ${fontSize * 0.95}px; font-weight: 600; background: none; border: none; cursor: pointer; white-space: nowrap; color: ${currentTab === tab.key ? config.primary_color : config.text_color}; border-bottom: ${currentTab === tab.key ? '3px solid ' + config.primary_color : 'none'};">
-                    <span style="font-size: ${fontSize * 1.2}px;">${tab.icon}</span> ${tab.label}
+        function renderContent(config, fontSize) {
+            const subject = materiData[currentSubject];
+            const chapter = subject.chapters[currentChapterIndex];
+
+            return `
+                <div class="w-full h-full" style="background-color: ${config.background_color || defaultConfig.background_color}; display: flex; flex-direction: column;">
+                    <!-- Header -->
+                    <div class="w-full" style="background: linear-gradient(135deg, ${config.primary_color || defaultConfig.primary_color}, ${config.accent_color || defaultConfig.accent_color}); padding: ${fontSize * 1.5}px; flex-shrink: 0;">
+                        <div style="max-width: 1200px; margin: 0 auto;">
+                            <button id="back-home" style="background: rgba(255,255,255,0.2); color: white; border: none; padding: ${fontSize * 0.7}px ${fontSize * 1.3}px; border-radius: 8px; cursor: pointer; font-size: ${fontSize * 1}px; font-weight: 600; margin-bottom: ${fontSize * 0.8}px;">← Kembali ke Beranda</button>
+                            <h2 style="font-size: ${fontSize * 1.8}px; font-weight: bold; color: white; text-align: center;">${subject.icon} ${subject.title}</h2>
+                        </div>
+                    </div>
+
+                    <!-- Main Content Area -->
+                    <div class="w-full" style="flex: 1; overflow: hidden; display: flex;">
+                        <!-- Sidebar Navigation -->
+                        <div style="width: 280px; background: ${config.surface_color || defaultConfig.surface_color}; border-right: 2px solid ${config.primary_color || defaultConfig.primary_color}; padding: ${fontSize * 1.5}px; overflow-y: auto; flex-shrink: 0;">
+                            <h3 style="font-size: ${fontSize * 1.2}px; font-weight: bold; color: ${config.text_color || defaultConfig.text_color}; margin-bottom: ${fontSize * 1}px;">📖 Daftar Bab</h3>
+                            ${renderChapterList(subject, config, fontSize)}
+                        </div>
+
+                        <!-- Content Area -->
+                        <div class="content-section" style="flex: 1; overflow-y: auto; padding: ${fontSize * 2}px;">
+                            <div style="max-width: 900px; margin: 0 auto;">
+                                <div style="background: ${config.surface_color || defaultConfig.surface_color}; border-radius: 16px; padding: ${fontSize * 2}px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                                    <h2 style="font-size: ${fontSize * 1.8}px; font-weight: bold; color: ${config.primary_color || defaultConfig.primary_color}; margin-bottom: ${fontSize * 1.5}px; border-bottom: 3px solid ${subject.color}; padding-bottom: ${fontSize * 0.8}px;">${chapter.title}</h2>
+                                    
+                                    ${chapter.topics.map(topic => `
+                                        <div style="margin-bottom: ${fontSize * 2}px;">
+                                            <h3 style="font-size: ${fontSize * 1.3}px; font-weight: bold; color: ${config.text_color || defaultConfig.text_color}; margin-bottom: ${fontSize * 1}px;">${topic.subtitle}</h3>
+                                            <div style="font-size: ${fontSize * 1}px; line-height: 1.8; color: ${config.text_color || defaultConfig.text_color}; white-space: pre-line;">${topic.content}</div>
+                                        </div>
+                                    `).join('')}
+
+                                    <!-- Navigation Buttons -->
+                                    <div style="display: flex; justify-content: space-between; gap: ${fontSize * 1}px; margin-top: ${fontSize * 2.5}px; padding-top: ${fontSize * 1.5}px; border-top: 2px solid ${config.primary_color || defaultConfig.primary_color};">
+                                        ${currentChapterIndex > 0 ? `
+                                            <button id="prev-chapter" style="flex: 1; background: white; color: ${config.primary_color || defaultConfig.primary_color}; border: 2px solid ${config.primary_color || defaultConfig.primary_color}; padding: ${fontSize * 1}px ${fontSize * 1.5}px; border-radius: 10px; cursor: pointer; font-size: ${fontSize * 1}px; font-weight: 600;">← Bab Sebelumnya</button>
+                                        ` : '<div></div>'}
+                                        
+                                        ${currentChapterIndex < subject.chapters.length - 1 ? `
+                                            <button id="next-chapter" style="flex: 1; background: ${config.primary_color || defaultConfig.primary_color}; color: white; border: none; padding: ${fontSize * 1}px ${fontSize * 1.5}px; border-radius: 10px; cursor: pointer; font-size: ${fontSize * 1}px; font-weight: 600;">Bab Berikutnya →</button>
+                                        ` : ''}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderChapterList(subject, config, fontSize) {
+            return subject.chapters.map((chapter, index) => `
+                <button class="chapter-button" data-chapter="${index}" style="width: 100%; text-align: left; background: ${index === currentChapterIndex ? config.primary_color || defaultConfig.primary_color : 'transparent'}; color: ${index === currentChapterIndex ? 'white' : config.text_color || defaultConfig.text_color}; border: none; padding: ${fontSize * 0.8}px ${fontSize * 1}px; border-radius: 8px; cursor: pointer; font-size: ${fontSize * 0.95}px; margin-bottom: ${fontSize * 0.5}px; border-left: 3px solid ${index === currentChapterIndex ? subject.color : 'transparent'};">
+                    ${chapter.title}
                 </button>
             `).join('');
         }
 
-        function renderContent(tab, fontSize) {
-            const data = materiData[tab];
-            return `
-                <div style="max-width: 900px; margin: 0 auto;">
-                    <div style="background: linear-gradient(135deg, ${config.secondary_color}, white); padding: ${fontSize * 1.5}px; border-radius: 12px; margin-bottom: ${fontSize * 1.5}px; text-align: center;">
-                        <h2 style="font-size: ${fontSize * 1.8}px; font-weight: bold; color: ${config.primary_color}; margin-bottom: ${fontSize * 0.5}px;">
-                            <span style="font-size: ${fontSize * 2}px;">${data.icon}</span> ${data.title}
-                        </h2>
-                    </div>
-                    ${renderTopics(data.topics, fontSize)}
-                </div>
-            `;
-        }
-
-        function renderTopics(topics, fontSize) {
-            return topics.map((topic, index) => `
-                <div class="topic-item" data-topic-index="${index}" style="background: white; border-radius: 12px; padding: ${fontSize * 1.2}px; margin-bottom: ${fontSize * 1}px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-left: 5px solid ${config.primary_color};">
-                    <div style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
-                        <h3 style="font-size: ${fontSize * 1.1}px; font-weight: 600; color: ${config.text_color}; margin: 0;">${topic.title}</h3>
-                        <span style="font-size: ${fontSize * 1.5}px; color: ${config.primary_color};">${expandedTopics[currentTab + '-' + index] ? '▼' : '▶'}</span>
-                    </div>
-                    <div class="collapse-content ${expandedTopics[currentTab + '-' + index] ? 'active' : ''}" style="margin-top: ${fontSize * 1}px; font-size: ${fontSize * 0.95}px; line-height: 1.7;">
-                        ${topic.content}
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function attachEventListeners() {
-            // Tab switching
-            document.querySelectorAll('.tab-button').forEach(button => {
+        function attachHomeListeners() {
+            document.querySelectorAll('[data-subject]').forEach(button => {
                 button.addEventListener('click', function() {
-                    const tabKey = this.getAttribute('data-tab');
-                    if (tabKey && tabKey !== currentTab) {
-                        currentTab = tabKey;
-                        renderApp();
-                    }
-                });
-            });
-            
-            // Topic toggle
-            document.querySelectorAll('.topic-item').forEach(item => {
-                item.addEventListener('click', function(e) {
-                    const topicIndex = this.getAttribute('data-topic-index');
-                    const key = currentTab + '-' + topicIndex;
-                    expandedTopics[key] = !expandedTopics[key];
+                    currentSubject = this.getAttribute('data-subject');
+                    currentChapterIndex = 0;
                     renderApp();
                 });
             });
         }
 
+        function attachContentListeners() {
+            const backBtn = document.getElementById('back-home');
+            if (backBtn) {
+                backBtn.addEventListener('click', () => {
+                    currentSubject = null;
+                    currentChapterIndex = 0;
+                    renderApp();
+                });
+            }
+
+            const prevBtn = document.getElementById('prev-chapter');
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    currentChapterIndex--;
+                    renderApp();
+                });
+            }
+
+            const nextBtn = document.getElementById('next-chapter');
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    currentChapterIndex++;
+                    renderApp();
+                });
+            }
+
+            document.querySelectorAll('.chapter-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    currentChapterIndex = parseInt(this.getAttribute('data-chapter'));
+                    renderApp();
+                });
+            });
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities: (config) => ({
+                    recolorables: [
+                        {
+                            get: () => config.background_color || defaultConfig.background_color,
+                            set: (value) => {
+                                config.background_color = value;
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.surface_color || defaultConfig.surface_color,
+                            set: (value) => {
+                                config.surface_color = value;
+                                window.elementSdk.setConfig({ surface_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.primary_color || defaultConfig.primary_color,
+                            set: (value) => {
+                                config.primary_color = value;
+                                window.elementSdk.setConfig({ primary_color: value });
+                            }
+                        }
+                    ],
+                    borderables: [],
+                    fontEditable: {
+                        get: () => config.font_family || defaultConfig.font_family,
+                        set: (value) => {
+                            config.font_family = value;
+                            window.elementSdk.setConfig({ font_family: value });
+                        }
+                    },
+                    fontSizeable: {
+                        get: () => config.font_size || defaultConfig.font_size,
+                        set: (value) => {
+                            config.font_size = value;
+                            window.elementSdk.setConfig({ font_size: value });
+                        }
+                    }
+                }),
+                mapToEditPanelValues: (config) => new Map([
+                    ["app_title", config.app_title || defaultConfig.app_title],
+                    ["welcome_text", config.welcome_text || defaultConfig.welcome_text]
+                ])
+            });
+        }
+
         renderApp();
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a76f233b4ac9fa3',t:'MTc2NDYzNzg0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a773d54503afdf8',t:'MTc2NDY0MDkyMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
